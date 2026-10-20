@@ -16,7 +16,10 @@ This file provides shared context for coding agents working in this repository. 
 
 | Need | Read |
 |---|---|
+| Strategic Blueprint & Research Synthesis | `docs/STRATEGIC_RESEARCH_BLUEPRINT.md` |
 | Project Context & Competition Track | `docs/INITIAL_CONTEXT.md` |
+| Track Alignment: Closing the Screening-to-Care Loop | `docs/CLOSING_THE_SCREENING_TO_CARE_LOOP.md` |
+| Problem Space & User Discovery Research | `docs/research/PROBLEM_SPACE_DISCOVERY.md` |
 | Product Requirements Document (PRD) | `docs/PRD-renal-pulse.md` |
 | System Scope & User Flow Specification | `docs/USER_FLOWS.md` |
 | Clinical Formulas & Validation Criteria | `docs/CLINICAL_FORMULAS.md` |

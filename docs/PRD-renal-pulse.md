@@ -17,6 +17,7 @@ RENAL-PULSE is a cardiorenal population health engine that converts routine, lat
 * **Work Type:** New Product / Core Platform MVP.
 * **Context Documentation:**
   * Strategic & Competition Brief: [docs/INITIAL_CONTEXT.md](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/INITIAL_CONTEXT.md)
+  * Problem Space Research & Discovery: [docs/research/PROBLEM_SPACE_DISCOVERY.md](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/research/PROBLEM_SPACE_DISCOVERY.md)
   * System Architecture & User Flows: [docs/USER_FLOWS.md](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/USER_FLOWS.md)
   * Clinical Mathematical Proofs: [docs/CLINICAL_FORMULAS.md](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/CLINICAL_FORMULAS.md)
 
