@@ -1,0 +1,3002 @@
+[
+  {
+    "patient_id": "PT-1001",
+    "name": "Patient 1001",
+    "age": 49,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 162,
+    "diastolic_bp": 102,
+    "uacr": 468.6,
+    "dipstick_protein": "2+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.61
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.82
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 2.05
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 2.25
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1002",
+    "name": "Patient 1002",
+    "age": 55,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 140,
+    "diastolic_bp": 96,
+    "uacr": 43.9,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.01
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.08
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.14
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.25
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1003",
+    "name": "Patient 1003",
+    "age": 52,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 138,
+    "diastolic_bp": 94,
+    "uacr": 137.6,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.05
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.15
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.25
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.33
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1004",
+    "name": "Patient 1004",
+    "age": 71,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 126,
+    "diastolic_bp": 79,
+    "uacr": 24.1,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.89
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.93
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 0.98
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 0.98
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1005",
+    "name": "Patient 1005",
+    "age": 56,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 124,
+    "diastolic_bp": 79,
+    "uacr": 15.4,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.95
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.96
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 0.99
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.02
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1006",
+    "name": "Patient 1006",
+    "age": 46,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 147,
+    "diastolic_bp": 90,
+    "uacr": 68.9,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.1
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.19
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.29
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.4
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1007",
+    "name": "Patient 1007",
+    "age": 45,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 180,
+    "diastolic_bp": 105,
+    "uacr": 691.0,
+    "dipstick_protein": "2+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.33
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.6
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.83
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 2.09
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1008",
+    "name": "Patient 1008",
+    "age": 67,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 139,
+    "diastolic_bp": 93,
+    "uacr": 199.4,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.2
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.33
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.44
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.6
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1009",
+    "name": "Patient 1009",
+    "age": 50,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 135,
+    "diastolic_bp": 84,
+    "uacr": 217.5,
+    "dipstick_protein": "2+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.07
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.16
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.3
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.4
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1010",
+    "name": "Patient 1010",
+    "age": 42,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 157,
+    "diastolic_bp": 100,
+    "uacr": 50.3,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.9
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.94
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 0.97
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.06
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1011",
+    "name": "Patient 1011",
+    "age": 58,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 143,
+    "diastolic_bp": 101,
+    "uacr": 84.4,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.95
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.01
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.05
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.15
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1012",
+    "name": "Patient 1012",
+    "age": 75,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 155,
+    "diastolic_bp": 88,
+    "uacr": 35.6,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.06
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.14
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.2
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.33
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1013",
+    "name": "Patient 1013",
+    "age": 47,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 157,
+    "diastolic_bp": 99,
+    "uacr": 459.1,
+    "dipstick_protein": "3+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.77
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.94
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 2.12
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 2.33
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1014",
+    "name": "Patient 1014",
+    "age": 54,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": false,
+    "systolic_bp": 146,
+    "diastolic_bp": 90,
+    "uacr": 169.2,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.99
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.11
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.2
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.29
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1015",
+    "name": "Patient 1015",
+    "age": 46,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 142,
+    "diastolic_bp": 83,
+    "uacr": 186.4,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.17
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.25
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.39
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.5
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1016",
+    "name": "Patient 1016",
+    "age": 72,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 180,
+    "diastolic_bp": 108,
+    "uacr": 511.8,
+    "dipstick_protein": "2+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.6
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.78
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 2.0
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 2.15
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1017",
+    "name": "Patient 1017",
+    "age": 48,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 150,
+    "diastolic_bp": 100,
+    "uacr": 106.9,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.86
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.91
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 0.97
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.05
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1018",
+    "name": "Patient 1018",
+    "age": 46,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 172,
+    "diastolic_bp": 98,
+    "uacr": 393.0,
+    "dipstick_protein": "2+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.78
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 2.05
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 2.27
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 2.51
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1019",
+    "name": "Patient 1019",
+    "age": 55,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": false,
+    "systolic_bp": 118,
+    "diastolic_bp": 81,
+    "uacr": 11.1,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.94
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.96
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.02
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.08
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1020",
+    "name": "Patient 1020",
+    "age": 73,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 133,
+    "diastolic_bp": 91,
+    "uacr": 247.3,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.2
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.31
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.41
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.54
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1021",
+    "name": "Patient 1021",
+    "age": 52,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 119,
+    "diastolic_bp": 84,
+    "uacr": 6.6,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.96
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.02
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.05
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.08
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1022",
+    "name": "Patient 1022",
+    "age": 44,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 158,
+    "diastolic_bp": 97,
+    "uacr": 74.7,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.86
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.93
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.01
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.11
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1023",
+    "name": "Patient 1023",
+    "age": 61,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 132,
+    "diastolic_bp": 89,
+    "uacr": 215.8,
+    "dipstick_protein": "2+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.3
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.38
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.46
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.59
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1024",
+    "name": "Patient 1024",
+    "age": 46,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 146,
+    "diastolic_bp": 95,
+    "uacr": 194.4,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.14
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.31
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.43
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.61
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1025",
+    "name": "Patient 1025",
+    "age": 61,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": false,
+    "systolic_bp": 119,
+    "diastolic_bp": 76,
+    "uacr": 22.1,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.75
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.75
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 0.76
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 0.8
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1026",
+    "name": "Patient 1026",
+    "age": 58,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 134,
+    "diastolic_bp": 92,
+    "uacr": 161.5,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.92
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.01
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.16
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.25
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1027",
+    "name": "Patient 1027",
+    "age": 70,
+    "sex": "female",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 143,
+    "diastolic_bp": 89,
+    "uacr": 114.8,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.07
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.18
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.27
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.32
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1028",
+    "name": "Patient 1028",
+    "age": 50,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 143,
+    "diastolic_bp": 85,
+    "uacr": 232.6,
+    "dipstick_protein": "2+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.94
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.11
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.25
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.4
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1029",
+    "name": "Patient 1029",
+    "age": 51,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": false,
+    "systolic_bp": 118,
+    "diastolic_bp": 77,
+    "uacr": 21.9,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.8
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.86
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 0.92
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 0.98
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1030",
+    "name": "Patient 1030",
+    "age": 59,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 158,
+    "diastolic_bp": 107,
+    "uacr": 1091.3,
+    "dipstick_protein": "3+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.33
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.56
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.78
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 2.04
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1031",
+    "name": "Patient 1031",
+    "age": 56,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 144,
+    "diastolic_bp": 87,
+    "uacr": 121.6,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.29
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.41
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.51
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.66
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1032",
+    "name": "Patient 1032",
+    "age": 63,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": false,
+    "systolic_bp": 137,
+    "diastolic_bp": 91,
+    "uacr": 309.7,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.92
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.04
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.19
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.32
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1033",
+    "name": "Patient 1033",
+    "age": 74,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 140,
+    "diastolic_bp": 82,
+    "uacr": 239.9,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.11
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.27
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.45
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.61
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1034",
+    "name": "Patient 1034",
+    "age": 54,
+    "sex": "female",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 161,
+    "diastolic_bp": 102,
+    "uacr": 56.4,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.0
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.1
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.16
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.24
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1035",
+    "name": "Patient 1035",
+    "age": 62,
+    "sex": "female",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 157,
+    "diastolic_bp": 90,
+    "uacr": 43.2,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.08
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.2
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.3
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.37
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1036",
+    "name": "Patient 1036",
+    "age": 42,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": false,
+    "systolic_bp": 150,
+    "diastolic_bp": 91,
+    "uacr": 225.0,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.08
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.22
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.38
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.55
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1037",
+    "name": "Patient 1037",
+    "age": 52,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": false,
+    "systolic_bp": 134,
+    "diastolic_bp": 95,
+    "uacr": 306.8,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.17
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.26
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.33
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.42
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1038",
+    "name": "Patient 1038",
+    "age": 72,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 160,
+    "diastolic_bp": 97,
+    "uacr": 43.5,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.92
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.97
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.06
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.17
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1039",
+    "name": "Patient 1039",
+    "age": 48,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": false,
+    "systolic_bp": 133,
+    "diastolic_bp": 90,
+    "uacr": 113.5,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.08
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.24
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.42
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.57
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1040",
+    "name": "Patient 1040",
+    "age": 70,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 172,
+    "diastolic_bp": 109,
+    "uacr": 1112.6,
+    "dipstick_protein": "3+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.47
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.72
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.93
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 2.18
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1041",
+    "name": "Patient 1041",
+    "age": 73,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 154,
+    "diastolic_bp": 86,
+    "uacr": 109.5,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.03
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.13
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.24
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.38
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1042",
+    "name": "Patient 1042",
+    "age": 55,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 150,
+    "diastolic_bp": 96,
+    "uacr": 69.3,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.86
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.97
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.05
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.14
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1043",
+    "name": "Patient 1043",
+    "age": 66,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": false,
+    "systolic_bp": 141,
+    "diastolic_bp": 94,
+    "uacr": 152.2,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.12
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.28
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.45
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.59
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1044",
+    "name": "Patient 1044",
+    "age": 59,
+    "sex": "female",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 152,
+    "diastolic_bp": 93,
+    "uacr": 88.5,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.02
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.15
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.28
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.38
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1045",
+    "name": "Patient 1045",
+    "age": 67,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": false,
+    "systolic_bp": 136,
+    "diastolic_bp": 95,
+    "uacr": 172.0,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.0
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.11
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.21
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.36
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1046",
+    "name": "Patient 1046",
+    "age": 59,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 147,
+    "diastolic_bp": 82,
+    "uacr": 251.0,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.3
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.43
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.57
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.7
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1047",
+    "name": "Patient 1047",
+    "age": 43,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 151,
+    "diastolic_bp": 84,
+    "uacr": 110.6,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.17
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.28
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.43
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.58
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1048",
+    "name": "Patient 1048",
+    "age": 52,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 160,
+    "diastolic_bp": 104,
+    "uacr": 441.9,
+    "dipstick_protein": "2+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.76
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 2.0
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 2.2
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 2.45
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1049",
+    "name": "Patient 1049",
+    "age": 54,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 160,
+    "diastolic_bp": 91,
+    "uacr": 34.7,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.06
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.11
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.23
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.34
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1050",
+    "name": "Patient 1050",
+    "age": 64,
+    "sex": "female",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 142,
+    "diastolic_bp": 96,
+    "uacr": 86.5,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.05
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.11
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.24
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.35
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1051",
+    "name": "Patient 1051",
+    "age": 71,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 163,
+    "diastolic_bp": 96,
+    "uacr": 116.7,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.98
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.1
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.2
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.33
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1052",
+    "name": "Patient 1052",
+    "age": 59,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": false,
+    "systolic_bp": 125,
+    "diastolic_bp": 78,
+    "uacr": 22.3,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.87
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.89
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 0.92
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 0.94
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1053",
+    "name": "Patient 1053",
+    "age": 73,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": false,
+    "systolic_bp": 142,
+    "diastolic_bp": 86,
+    "uacr": 287.1,
+    "dipstick_protein": "2+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.25
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.38
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.48
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.59
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1054",
+    "name": "Patient 1054",
+    "age": 68,
+    "sex": "female",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 147,
+    "diastolic_bp": 99,
+    "uacr": 70.2,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.95
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.01
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.08
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.19
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1055",
+    "name": "Patient 1055",
+    "age": 61,
+    "sex": "female",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 156,
+    "diastolic_bp": 93,
+    "uacr": 65.4,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.97
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.04
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.1
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.15
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1056",
+    "name": "Patient 1056",
+    "age": 54,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 138,
+    "diastolic_bp": 85,
+    "uacr": 248.1,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.19
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.35
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.49
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.61
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1057",
+    "name": "Patient 1057",
+    "age": 54,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 141,
+    "diastolic_bp": 82,
+    "uacr": 239.7,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.01
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.17
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.34
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.47
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1058",
+    "name": "Patient 1058",
+    "age": 73,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": false,
+    "systolic_bp": 125,
+    "diastolic_bp": 82,
+    "uacr": 12.8,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.99
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.04
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.03
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.02
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1059",
+    "name": "Patient 1059",
+    "age": 73,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 161,
+    "diastolic_bp": 88,
+    "uacr": 39.4,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.08
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.12
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.19
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.25
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1060",
+    "name": "Patient 1060",
+    "age": 56,
+    "sex": "female",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 154,
+    "diastolic_bp": 92,
+    "uacr": 106.7,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.89
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.98
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.09
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.21
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1061",
+    "name": "Patient 1061",
+    "age": 55,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 137,
+    "diastolic_bp": 85,
+    "uacr": 92.8,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.96
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.1
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.22
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.3
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1062",
+    "name": "Patient 1062",
+    "age": 60,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 169,
+    "diastolic_bp": 97,
+    "uacr": 934.3,
+    "dipstick_protein": "3+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.67
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.9
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 2.15
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 2.36
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1063",
+    "name": "Patient 1063",
+    "age": 56,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 118,
+    "diastolic_bp": 77,
+    "uacr": 23.2,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.88
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.95
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 0.98
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.01
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1064",
+    "name": "Patient 1064",
+    "age": 61,
+    "sex": "female",
+    "has_diabetes": false,
+    "has_hypertension": false,
+    "systolic_bp": 119,
+    "diastolic_bp": 84,
+    "uacr": 5.9,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.83
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.83
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 0.82
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 0.88
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1065",
+    "name": "Patient 1065",
+    "age": 43,
+    "sex": "female",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 164,
+    "diastolic_bp": 100,
+    "uacr": 41.6,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.0
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.07
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.18
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.29
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1066",
+    "name": "Patient 1066",
+    "age": 73,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 153,
+    "diastolic_bp": 93,
+    "uacr": 55.5,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.06
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.15
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.21
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.32
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1067",
+    "name": "Patient 1067",
+    "age": 44,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": false,
+    "systolic_bp": 142,
+    "diastolic_bp": 83,
+    "uacr": 311.8,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.25
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.36
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.54
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.68
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1068",
+    "name": "Patient 1068",
+    "age": 45,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 159,
+    "diastolic_bp": 100,
+    "uacr": 72.4,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.03
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.1
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.2
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.26
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1069",
+    "name": "Patient 1069",
+    "age": 73,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 154,
+    "diastolic_bp": 84,
+    "uacr": 130.5,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.12
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.26
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.39
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.49
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1070",
+    "name": "Patient 1070",
+    "age": 49,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 162,
+    "diastolic_bp": 92,
+    "uacr": 73.3,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.92
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.0
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.08
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.13
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1071",
+    "name": "Patient 1071",
+    "age": 54,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": false,
+    "systolic_bp": 123,
+    "diastolic_bp": 83,
+    "uacr": 11.1,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.7
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.76
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 0.8
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 0.84
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1072",
+    "name": "Patient 1072",
+    "age": 51,
+    "sex": "female",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 151,
+    "diastolic_bp": 93,
+    "uacr": 77.4,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.91
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.04
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.18
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.26
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1073",
+    "name": "Patient 1073",
+    "age": 66,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 123,
+    "diastolic_bp": 82,
+    "uacr": 21.2,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.94
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.98
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.03
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.09
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1074",
+    "name": "Patient 1074",
+    "age": 73,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": false,
+    "systolic_bp": 135,
+    "diastolic_bp": 95,
+    "uacr": 277.4,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.11
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.25
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.37
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.51
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1075",
+    "name": "Patient 1075",
+    "age": 51,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 148,
+    "diastolic_bp": 93,
+    "uacr": 84.2,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.99
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.11
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.24
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.33
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1076",
+    "name": "Patient 1076",
+    "age": 62,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 121,
+    "diastolic_bp": 79,
+    "uacr": 27.9,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.92
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.91
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 0.95
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.0
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1077",
+    "name": "Patient 1077",
+    "age": 70,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 140,
+    "diastolic_bp": 88,
+    "uacr": 55.8,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.89
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.94
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.02
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.1
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1078",
+    "name": "Patient 1078",
+    "age": 53,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": false,
+    "systolic_bp": 151,
+    "diastolic_bp": 92,
+    "uacr": 111.2,
+    "dipstick_protein": "2+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.96
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.06
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.16
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.24
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1079",
+    "name": "Patient 1079",
+    "age": 71,
+    "sex": "female",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 145,
+    "diastolic_bp": 89,
+    "uacr": 67.0,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.1
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.21
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.3
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.37
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1080",
+    "name": "Patient 1080",
+    "age": 61,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 121,
+    "diastolic_bp": 81,
+    "uacr": 18.2,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.87
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.89
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 0.96
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.01
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1081",
+    "name": "Patient 1081",
+    "age": 59,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 161,
+    "diastolic_bp": 100,
+    "uacr": 95.7,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.07
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.19
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.31
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.42
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1082",
+    "name": "Patient 1082",
+    "age": 56,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 151,
+    "diastolic_bp": 86,
+    "uacr": 231.4,
+    "dipstick_protein": "2+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.21
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.32
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.42
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.57
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1083",
+    "name": "Patient 1083",
+    "age": 44,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 156,
+    "diastolic_bp": 106,
+    "uacr": 972.5,
+    "dipstick_protein": "2+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.75
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.93
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 2.09
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 2.3
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1084",
+    "name": "Patient 1084",
+    "age": 65,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 163,
+    "diastolic_bp": 110,
+    "uacr": 1172.3,
+    "dipstick_protein": "3+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.65
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.81
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 2.04
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 2.2
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1085",
+    "name": "Patient 1085",
+    "age": 56,
+    "sex": "female",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 130,
+    "diastolic_bp": 81,
+    "uacr": 5.3,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.86
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.9
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 0.94
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 0.97
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1086",
+    "name": "Patient 1086",
+    "age": 65,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 155,
+    "diastolic_bp": 88,
+    "uacr": 83.9,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.9
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.0
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.1
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.18
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1087",
+    "name": "Patient 1087",
+    "age": 61,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 133,
+    "diastolic_bp": 86,
+    "uacr": 318.9,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.94
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.06
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.21
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.37
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1088",
+    "name": "Patient 1088",
+    "age": 68,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": false,
+    "systolic_bp": 127,
+    "diastolic_bp": 81,
+    "uacr": 26.6,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.78
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.79
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 0.82
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 0.83
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1089",
+    "name": "Patient 1089",
+    "age": 65,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": false,
+    "systolic_bp": 118,
+    "diastolic_bp": 81,
+    "uacr": 11.3,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.99
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.05
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.05
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.06
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1090",
+    "name": "Patient 1090",
+    "age": 43,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 162,
+    "diastolic_bp": 99,
+    "uacr": 1018.9,
+    "dipstick_protein": "2+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.24
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.44
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.65
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.91
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1091",
+    "name": "Patient 1091",
+    "age": 63,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 174,
+    "diastolic_bp": 95,
+    "uacr": 585.7,
+    "dipstick_protein": "2+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.79
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 2.02
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 2.2
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 2.44
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1092",
+    "name": "Patient 1092",
+    "age": 50,
+    "sex": "male",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 150,
+    "diastolic_bp": 87,
+    "uacr": 49.3,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.92
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.06
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.22
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.36
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1093",
+    "name": "Patient 1093",
+    "age": 65,
+    "sex": "male",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 147,
+    "diastolic_bp": 97,
+    "uacr": 29.1,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.96
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.08
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.12
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.2
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1094",
+    "name": "Patient 1094",
+    "age": 67,
+    "sex": "female",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 155,
+    "diastolic_bp": 99,
+    "uacr": 111.4,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.07
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.11
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.15
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.23
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1095",
+    "name": "Patient 1095",
+    "age": 62,
+    "sex": "female",
+    "has_diabetes": false,
+    "has_hypertension": false,
+    "systolic_bp": 126,
+    "diastolic_bp": 84,
+    "uacr": 14.9,
+    "dipstick_protein": "negative",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.94
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 0.97
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.02
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.04
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1096",
+    "name": "Patient 1096",
+    "age": 55,
+    "sex": "female",
+    "has_diabetes": false,
+    "has_hypertension": true,
+    "systolic_bp": 147,
+    "diastolic_bp": 94,
+    "uacr": 57.2,
+    "dipstick_protein": "trace",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 0.92
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.0
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.08
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.15
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1097",
+    "name": "Patient 1097",
+    "age": 51,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 134,
+    "diastolic_bp": 88,
+    "uacr": 71.6,
+    "dipstick_protein": "2+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.05
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.12
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.26
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.37
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1098",
+    "name": "Patient 1098",
+    "age": 49,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": false,
+    "systolic_bp": 155,
+    "diastolic_bp": 82,
+    "uacr": 311.3,
+    "dipstick_protein": "2+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.02
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.12
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.19
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.29
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1099",
+    "name": "Patient 1099",
+    "age": 48,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": true,
+    "systolic_bp": 166,
+    "diastolic_bp": 98,
+    "uacr": 998.2,
+    "dipstick_protein": "2+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.68
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.95
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 2.21
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 2.45
+      }
+    ]
+  },
+  {
+    "patient_id": "PT-1100",
+    "name": "Patient 1100",
+    "age": 43,
+    "sex": "female",
+    "has_diabetes": true,
+    "has_hypertension": false,
+    "systolic_bp": 154,
+    "diastolic_bp": 94,
+    "uacr": 130.0,
+    "dipstick_protein": "1+",
+    "creatinine_history": [
+      {
+        "timestamp": "2024-10-18T21:07:54Z",
+        "serum_creatinine": 1.04
+      },
+      {
+        "timestamp": "2025-06-19T21:07:54Z",
+        "serum_creatinine": 1.12
+      },
+      {
+        "timestamp": "2026-02-18T21:07:54Z",
+        "serum_creatinine": 1.24
+      },
+      {
+        "timestamp": "2026-10-20T21:07:54Z",
+        "serum_creatinine": 1.31
+      }
+    ]
+  }
+]
