@@ -45,6 +45,7 @@ End-Stage Kidney Disease (ESKD) is among the most catastrophic health events in 
 future-health/
 ├── docs/
 │   ├── INITIAL_CONTEXT.md         # Full research, track analysis, winning brief & pitch
+│   ├── USER_FLOWS.md              # System scope, macro architecture & user flow specifications
 │   ├── ARCHITECTURE.md            # Technical specifications, FHIR mappings, API schemas
 │   ├── CLINICAL_FORMULAS.md       # CKD-EPI 2021, KFRE 4-var, and KDIGO 2024 algorithms
 │   └── pitch/                     # Pitch deck outline, presentation notes, video demo script
