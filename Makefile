@@ -4,7 +4,7 @@ help:
 	@echo "RENAL-PULSE Developer Workflow:"
 	@echo "  make setup     - Install backend and frontend dependencies"
 	@echo "  make dev       - Run both backend (:8000) and frontend (:5173)"
-	@echo "  make dev-fe    - Run Vite frontend dev server"
+	@echo "  make dev-fe    - Run Vite frontend dev server (:5174)"
 	@echo "  make dev-be    - Run FastAPI backend dev server"
 	@echo "  make test      - Run all tests (backend & frontend)"
 	@echo "  make test-be   - Run backend pytest suite"

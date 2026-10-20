@@ -24,7 +24,7 @@ This file provides shared context for coding agents working in this repository. 
 | Data Model & Synthetic Schema | `data/schemas/patient_schema.json` |
 | Frontend Conventions & FSD Rules | `.agents/rules/30-frontend.md` |
 | Clinical Decision Safety Rules | `.agents/rules/40-clinical-safety.md` |
-| Active Tasks & Sprints | `docs/specs/` |
+| Active Tasks & Sprints | `docs/specs/sprint-plan.md` |
 
 ---
 
