@@ -1,0 +1,2373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mediora Clinical Design System — UI Foundation & Component Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* -------------------------------------------------------------
+       DESIGN TOKENS (Sourced directly from DESIGN.md)
+       ------------------------------------------------------------- */
+    :root {
+      /* Colors: Canvas & Surfaces */
+      --color-canvas: #f5f6f9;
+      --color-surface-card: #ffffff;
+      --color-surface-subtle: #f8fafc;
+      --color-surface-muted: #f1f5f9;
+      --color-surface-popover: #ffffff;
+
+      /* Brand & Interactive Accent */
+      --color-primary-indigo: #4f46e5;
+      --color-primary-hover: #4338ca;
+      --color-primary-subtle: #eef2ff;
+      --color-accent-cyan: #06b6d4;
+      --color-accent-purple: #a855f7;
+
+      /* Typography Ink */
+      --color-text-primary: #0f172a;
+      --color-text-secondary: #64748b;
+      --color-text-muted: #94a3b8;
+      --color-text-inverse: #ffffff;
+
+      /* Borders & Hairlines */
+      --color-border-subtle: #e2e8f0;
+      --color-border-card: #f1f5f9;
+      --color-border-focus: #6366f1;
+
+      /* Clinical & Status Tiers */
+      --color-status-success: #10b981;
+      --color-status-success-subtle: #ecfdf5;
+      --color-status-success-text: #065f46;
+
+      --color-status-warning: #f97316;
+      --color-status-warning-subtle: #fff7ed;
+      --color-status-warning-text: #9a3412;
+
+      --color-status-danger: #ef4444;
+      --color-status-danger-subtle: #fef2f2;
+      --color-status-danger-text: #991b1b;
+
+      --color-status-info: #3b82f6;
+      --color-status-info-subtle: #eff6ff;
+      --color-status-info-text: #1e40af;
+
+      /* Atmospheric AI Aura Gradients */
+      --aura-gradient: radial-gradient(120% 120% at 50% 0%, #cffafe 0%, #e0e7ff 50%, #f3e8ff 100%);
+      --aura-glow: radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.15), rgba(79, 70, 229, 0.12) 40%, rgba(168, 85, 247, 0.08) 70%, transparent 100%);
+
+      /* Typography Stacks */
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+      /* Squircles & Radii */
+      --radius-sm: 8px;
+      --radius-base: 12px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --radius-2xl: 24px;
+      --radius-3xl: 28px;
+      --radius-full: 9999px;
+
+      /* Elevation & Shadows */
+      --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 6px 16px -4px rgba(0, 0, 0, 0.03);
+      --shadow-card-hover: 0 12px 28px -6px rgba(0, 0, 0, 0.06);
+      --shadow-modal: 0 24px 48px -12px rgba(15, 23, 42, 0.18);
+      --shadow-button: 0 1px 2px 0 rgba(79, 70, 229, 0.2);
+    }
+
+    /* -------------------------------------------------------------
+       BASE RESETS & GLOBAL STYLING
+       ------------------------------------------------------------- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--color-canvas);
+      color: var(--color-text-primary);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      line-height: 20px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding-bottom: 80px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      background: none;
+    }
+
+    input, select, textarea {
+      font-family: inherit;
+    }
+
+    .font-mono {
+      font-family: var(--font-mono);
+      font-feature-settings: "tnum" 1, "zero" 1;
+    }
+
+    /* -------------------------------------------------------------
+       LAYOUT & UTILITY CONTAINERS
+       ------------------------------------------------------------- */
+    .container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Top Sticky Brand Navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 20px;
+    }
+
+    .brand-cluster {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--color-primary-indigo), #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+    }
+
+    .brand-titles h1 {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--color-text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-titles h1 .accent-tag {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      background: var(--color-primary-subtle);
+      color: var(--color-primary-indigo);
+      border: 1px solid rgba(79, 70, 229, 0.15);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .brand-titles p {
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      font-weight: 500;
+    }
+
+    /* Global Search Pill (Header) */
+    .header-search-pill {
+      position: relative;
+      flex: 1;
+      max-width: 440px;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-search-pill input {
+      width: 100%;
+      height: 44px;
+      border-radius: var(--radius-full);
+      background: var(--color-surface-subtle);
+      border: 1px solid var(--color-border-subtle);
+      padding: 0 64px 0 42px;
+      font-size: 13px;
+      color: var(--color-text-primary);
+      transition: all 0.2s ease;
+    }
+
+    .header-search-pill input:focus {
+      background: #ffffff;
+      border-color: var(--color-border-focus);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+      outline: none;
+    }
+
+    .search-icon-left {
+      position: absolute;
+      left: 14px;
+      pointer-events: none;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+    }
+
+    .search-shortcut-chip {
+      position: absolute;
+      right: 12px;
+      background: #ffffff;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 6px;
+      padding: 2px 7px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      font-family: var(--font-mono);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* -------------------------------------------------------------
+       NAVIGATION TABS / JUMP ANCHORS
+       ------------------------------------------------------------- */
+    .tabs-bar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--color-border-subtle);
+      position: sticky;
+      top: 72px;
+      z-index: 35;
+    }
+
+    .tabs-nav {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 10px 0;
+      scrollbar-width: none;
+    }
+
+    .tabs-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-btn {
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      transition: all 0.18s ease;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tab-btn:hover {
+      color: var(--color-text-primary);
+      background: var(--color-surface-muted);
+    }
+
+    .tab-btn.active {
+      background: var(--color-primary-subtle);
+      color: var(--color-primary-indigo);
+    }
+
+    /* -------------------------------------------------------------
+       HERO BANNER
+       ------------------------------------------------------------- */
+    .hero-banner {
+      margin: 32px 0 40px;
+      border-radius: var(--radius-3xl);
+      background: linear-gradient(135deg, #ffffff 0%, #f8faff 50%, #f0f4ff 100%);
+      border: 1px solid var(--color-border-subtle);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .hero-banner::after {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: var(--aura-gradient);
+      opacity: 0.35;
+      filter: blur(60px);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 820px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ffffff;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-full);
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-primary-indigo);
+      margin-bottom: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .hero-title {
+      font-size: 32px;
+      line-height: 40px;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--color-text-primary);
+      margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      line-height: 24px;
+      color: var(--color-text-secondary);
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .hero-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--color-text-secondary);
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border-card);
+    }
+
+    /* -------------------------------------------------------------
+       SECTION STRUCTURES
+       ------------------------------------------------------------- */
+    .section-block {
+      margin-bottom: 56px;
+      scroll-margin-top: 140px;
+    }
+
+    .section-header {
+      margin-bottom: 24px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--color-border-subtle);
+      padding-bottom: 14px;
+    }
+
+    .section-header-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-header-desc {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      margin-top: 4px;
+    }
+
+    /* -------------------------------------------------------------
+       CARDS (20px - 24px Squircles)
+       ------------------------------------------------------------- */
+    .card {
+      background: var(--color-surface-card);
+      border: 1px solid var(--color-border-card);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      padding: 24px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      margin-bottom: 16px;
+    }
+
+    /* -------------------------------------------------------------
+       1. COLOR PALETTE SWATCH GRID
+       ------------------------------------------------------------- */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 16px;
+    }
+
+    .swatch-card {
+      background: #ffffff;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 12px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .swatch-card:hover {
+      border-color: var(--color-primary-indigo);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .swatch-preview {
+      height: 72px;
+      border-radius: var(--radius-md);
+      margin-bottom: 10px;
+      position: relative;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .swatch-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .swatch-hex {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .swatch-role {
+      font-size: 11px;
+      color: var(--color-text-muted);
+      margin-top: 4px;
+      line-height: 14px;
+    }
+
+    /* -------------------------------------------------------------
+       2. TYPOGRAPHY SCALE TABLE
+       ------------------------------------------------------------- */
+    .type-spec-card {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .type-row {
+      display: grid;
+      grid-template-columns: 140px 180px 1fr;
+      padding: 18px 24px;
+      align-items: center;
+      border-bottom: 1px solid var(--color-border-card);
+      gap: 16px;
+    }
+
+    .type-row:last-child {
+      border-bottom: none;
+    }
+
+    .type-role {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-primary-indigo);
+    }
+
+    .type-metrics {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--color-text-secondary);
+    }
+
+    /* -------------------------------------------------------------
+       3. BUTTONS (Pill-Shaped 9999px with Tactile Clicks)
+       ------------------------------------------------------------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 44px;
+      padding: 0 20px;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.16s ease;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .btn:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
+    .btn-primary {
+      background: var(--color-primary-indigo);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.28);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-hover);
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.36);
+    }
+
+    .btn-secondary {
+      background: var(--color-text-primary);
+      color: #ffffff;
+    }
+
+    .btn-secondary:hover {
+      background: #1e293b;
+    }
+
+    .btn-subtle {
+      background: var(--color-primary-subtle);
+      color: var(--color-primary-indigo);
+      border: 1px solid rgba(79, 70, 229, 0.16);
+    }
+
+    .btn-subtle:hover {
+      background: #e0e7ff;
+    }
+
+    .btn-outline {
+      background: #ffffff;
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-border-subtle);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+
+    .btn-outline:hover {
+      background: var(--color-surface-subtle);
+      border-color: #cbd5e1;
+    }
+
+    .btn-success {
+      background: var(--color-status-success);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+    }
+
+    .btn-success:hover {
+      background: #059669;
+    }
+
+    .btn-danger {
+      background: var(--color-status-danger);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(239, 68, 68, 0.25);
+    }
+
+    .btn-danger:hover {
+      background: #dc2626;
+    }
+
+    .btn-icon {
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-sm {
+      height: 36px;
+      padding: 0 14px;
+      font-size: 12px;
+    }
+
+    .btn-lg {
+      height: 48px;
+      padding: 0 26px;
+      font-size: 15px;
+    }
+
+    /* -------------------------------------------------------------
+       4. BADGES & PILL STATUS TAGS
+       ------------------------------------------------------------- */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      border: 1px solid transparent;
+    }
+
+    .badge-success {
+      background: var(--color-status-success-subtle);
+      color: var(--color-status-success-text);
+      border-color: rgba(16, 185, 129, 0.2);
+    }
+
+    .badge-warning {
+      background: var(--color-status-warning-subtle);
+      color: var(--color-status-warning-text);
+      border-color: rgba(249, 115, 22, 0.2);
+    }
+
+    .badge-danger {
+      background: var(--color-status-danger-subtle);
+      color: var(--color-status-danger-text);
+      border-color: rgba(239, 68, 68, 0.2);
+    }
+
+    .badge-info {
+      background: var(--color-status-info-subtle);
+      color: var(--color-status-info-text);
+      border-color: rgba(59, 130, 246, 0.2);
+    }
+
+    .badge-indigo {
+      background: var(--color-primary-subtle);
+      color: var(--color-primary-indigo);
+      border-color: rgba(79, 70, 229, 0.2);
+    }
+
+    .badge-cyan {
+      background: #ecfeff;
+      color: #0e7490;
+      border-color: rgba(6, 182, 212, 0.2);
+    }
+
+    .badge-purple {
+      background: #faf5ff;
+      color: #7e22ce;
+      border-color: rgba(168, 85, 247, 0.2);
+    }
+
+    .dot-indicator {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    /* -------------------------------------------------------------
+       5. FORM INPUTS & SEARCH CONTROLS
+       ------------------------------------------------------------- */
+    .form-group {
+      display: flex;
+      flex-col: column;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .form-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+
+    .form-hint {
+      font-size: 11px;
+      color: var(--color-text-secondary);
+    }
+
+    .form-input {
+      height: 44px;
+      width: 100%;
+      border-radius: var(--radius-md);
+      background: var(--color-surface-subtle);
+      border: 1px solid var(--color-border-subtle);
+      padding: 0 14px;
+      font-size: 13px;
+      color: var(--color-text-primary);
+      transition: all 0.18s ease;
+    }
+
+    .form-input:focus {
+      background: #ffffff;
+      border-color: var(--color-border-focus);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+      outline: none;
+    }
+
+    .form-input.error {
+      border-color: var(--color-status-danger);
+      background: var(--color-status-danger-subtle);
+    }
+
+    .form-error-msg {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-status-danger-text);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* -------------------------------------------------------------
+       6. CLINICAL SPECIFIC COMPONENTS (from DESIGN.md)
+       ------------------------------------------------------------- */
+
+    /* Medication Card */
+    .medication-card {
+      border-radius: var(--radius-xl);
+      background: #ffffff;
+      border: 1px solid var(--color-border-card);
+      box-shadow: var(--shadow-card);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .medication-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .medication-asset-frame {
+      height: 120px;
+      background: var(--color-surface-subtle);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .floating-refill-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 2;
+    }
+
+    .med-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 4px;
+    }
+
+    .med-strength {
+      font-size: 13px;
+      color: var(--color-primary-indigo);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .med-dosage {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      line-height: 16px;
+    }
+
+    /* Provider & Specialist Card */
+    .provider-card {
+      border-radius: var(--radius-xl);
+      background: #ffffff;
+      border: 1px solid var(--color-border-card);
+      box-shadow: var(--shadow-card);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .provider-header {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .provider-avatar-frame {
+      width: 58px;
+      height: 58px;
+      border-radius: var(--radius-lg);
+      background: #e0e7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary-indigo);
+      font-weight: 800;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .provider-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      background: var(--color-surface-subtle);
+      border-radius: var(--radius-md);
+      padding: 10px;
+      text-align: center;
+      gap: 8px;
+    }
+
+    .metrics-cell-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+    }
+
+    .metrics-cell-value {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-top: 2px;
+    }
+
+    .provider-footer-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    /* AI Co-Pilot Card (Atmospheric Gradient & 3D Bubble Mascot) */
+    .ai-copilot-card {
+      border-radius: var(--radius-2xl);
+      background: #ffffff;
+      border: 1px solid var(--color-border-card);
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+      padding: 24px;
+    }
+
+    .ai-aura-background {
+      position: absolute;
+      top: -20px;
+      left: 0;
+      right: 0;
+      height: 180px;
+      background: var(--aura-gradient);
+      opacity: 0.65;
+      filter: blur(36px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .ai-card-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .ai-mascot-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .ai-mascot-3d {
+      width: 54px;
+      height: 54px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #06b6d4, #4f46e5);
+      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      color: white;
+    }
+
+    .ai-mascot-eyes {
+      display: flex;
+      gap: 7px;
+    }
+
+    .ai-eye-pill {
+      width: 5px;
+      height: 10px;
+      background: #ffffff;
+      border-radius: 9999px;
+      animation: blink 3.5s infinite;
+    }
+
+    @keyframes blink {
+      0%, 96%, 100% { transform: scaleY(1); }
+      98% { transform: scaleY(0.1); }
+    }
+
+    .ai-prompt-chips-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 18px 0;
+    }
+
+    .ai-action-chip {
+      background: var(--color-surface-subtle);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.16s ease;
+      cursor: pointer;
+    }
+
+    .ai-action-chip:hover {
+      background: var(--color-primary-subtle);
+      border-color: rgba(79, 70, 229, 0.3);
+      color: var(--color-primary-indigo);
+      transform: translateX(3px);
+    }
+
+    .ai-prompt-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-surface-subtle);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-full);
+      padding: 4px 6px 4px 16px;
+    }
+
+    .ai-prompt-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      color: var(--color-text-primary);
+      outline: none;
+    }
+
+    .ai-prompt-tools {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .tool-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-secondary);
+      transition: background 0.15s ease;
+    }
+
+    .tool-btn:hover {
+      background: #e2e8f0;
+      color: var(--color-text-primary);
+    }
+
+    /* -------------------------------------------------------------
+       7. CLINICAL MODAL DIALOG (28px Squircle + Dark Blurred Backdrop)
+       ------------------------------------------------------------- */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease;
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-container {
+      width: 100%;
+      max-width: 580px;
+      background: #ffffff;
+      border-radius: var(--radius-3xl);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: var(--shadow-modal);
+      overflow: hidden;
+      transform: scale(0.95);
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-backdrop.open .modal-container {
+      transform: scale(1);
+    }
+
+    .modal-header {
+      padding: 24px 28px 18px;
+      border-bottom: 1px solid var(--color-border-card);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .modal-header-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: var(--color-primary-subtle);
+      color: var(--color-primary-indigo);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-body {
+      padding: 24px 28px;
+    }
+
+    .modal-footer {
+      padding: 16px 28px 24px;
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      background: #fafbfc;
+      border-top: 1px solid var(--color-border-card);
+    }
+
+    /* Laboratory Structured Results Table */
+    .lab-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 16px 0;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border-subtle);
+      overflow: hidden;
+    }
+
+    .lab-table th {
+      background: var(--color-surface-subtle);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-secondary);
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+
+    .lab-table td {
+      padding: 12px 14px;
+      font-size: 13px;
+      border-bottom: 1px solid var(--color-border-card);
+      color: var(--color-text-primary);
+    }
+
+    .lab-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .lab-value-highlight {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--color-primary-indigo);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .clinical-callout-box {
+      background: var(--color-primary-subtle);
+      border: 1px solid rgba(79, 70, 229, 0.2);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      font-size: 12px;
+      line-height: 18px;
+      color: #3730a3;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-top: 16px;
+    }
+
+    /* -------------------------------------------------------------
+       8. FULL SHELL ARCHITECTURE PREVIEW (Sidebar + Stage + Right Rail)
+       ------------------------------------------------------------- */
+    .shell-preview-frame {
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--color-border-subtle);
+      background: #ffffff;
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      margin-top: 16px;
+    }
+
+    .shell-container {
+      display: grid;
+      grid-template-columns: 240px 1fr 320px;
+      min-height: 520px;
+      background: var(--color-canvas);
+    }
+
+    @media (max-width: 1080px) {
+      .shell-container {
+        grid-template-columns: 200px 1fr;
+      }
+      .shell-right-rail {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .shell-container {
+        grid-template-columns: 1fr;
+      }
+      .shell-sidebar {
+        display: none;
+      }
+    }
+
+    .shell-sidebar {
+      background: #ffffff;
+      border-right: 1px solid var(--color-border-subtle);
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .shell-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 20px;
+    }
+
+    .shell-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .shell-nav-item:hover {
+      background: var(--color-surface-muted);
+      color: var(--color-text-primary);
+    }
+
+    .shell-nav-item.active {
+      background: var(--color-primary-subtle);
+      color: var(--color-primary-indigo);
+    }
+
+    .shell-security-badge {
+      background: var(--color-surface-subtle);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 12px;
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      line-height: 15px;
+    }
+
+    .shell-stage {
+      padding: 24px;
+      overflow-y: auto;
+    }
+
+    .shell-right-rail {
+      background: #ffffff;
+      border-left: 1px solid var(--color-border-subtle);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--color-text-primary);
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 200;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =============================================================
+       SITE HEADER (Sticky Mediora Clinical Shell)
+       ============================================================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand-cluster">
+        <div class="brand-logo-icon">
+          <!-- Pulse / Activity SVG Icon -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <h1>
+            MEDIORA <span style="color: var(--color-primary-indigo);">CLINICAL</span>
+            <span class="accent-tag">DESIGN.MD SPEC</span>
+          </h1>
+          <p>Cardiorenal Population Health Design Foundation</p>
+        </div>
+      </div>
+
+      <!-- Header Global Search Pill -->
+      <div class="header-search-pill">
+        <span class="search-icon-left">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </span>
+        <input type="text" placeholder="Search tokens, components, or clinical parameters..." id="headerSearchInput">
+        <span class="search-shortcut-chip">⌘S</span>
+      </div>
+
+      <!-- Header Action Cluster -->
+      <div class="header-actions">
+        <button class="btn btn-outline btn-sm" onclick="openLabModal()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+          </svg>
+          Clinical Modal
+        </button>
+
+        <button class="btn btn-primary btn-sm" onclick="showToast('Active Doctor Session: Dr. Sarah Chen, MD')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="8.5" cy="7" r="4"></circle>
+            <line x1="20" y1="8" x2="20" y2="14"></line>
+            <line x1="23" y1="11" x2="17" y2="11"></line>
+          </svg>
+          + Add Medication
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =============================================================
+       CATEGORY TABS NAVIGATION
+       ============================================================= -->
+  <nav class="tabs-bar">
+    <div class="container">
+      <div class="tabs-nav">
+        <a href="#foundations" class="tab-btn active">
+          <span>🎨</span> Tokens & Foundations
+        </a>
+        <a href="#typography" class="tab-btn">
+          <span>🔤</span> Typography
+        </a>
+        <a href="#buttons" class="tab-btn">
+          <span>🔘</span> Buttons & Badges
+        </a>
+        <a href="#inputs" class="tab-btn">
+          <span>📝</span> Form Inputs
+        </a>
+        <a href="#clinical-cards" class="tab-btn">
+          <span>💊</span> Clinical & Med Cards
+        </a>
+        <a href="#ai-copilot" class="tab-btn">
+          <span>🤖</span> AI Co-Pilot Assistant
+        </a>
+        <a href="#lab-modal" class="tab-btn">
+          <span>🩺</span> Clinical Lab Dialog
+        </a>
+        <a href="#shell-layout" class="tab-btn">
+          <span>🖥️</span> Shell Architecture
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- =============================================================
+         HERO SHOWCASE BANNER
+         ============================================================= -->
+    <section class="hero-banner">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          Single Source of Truth: DESIGN.md
+        </div>
+        <h2 class="hero-title">Mediora Clinical Design System & Foundation</h2>
+        <p class="hero-subtitle">
+          An approachable, high-trust healthcare interface combining clinical precision with soft consumer SaaS patterns. Featuring squircle geometry (16px–28px), pill action triggers (9999px), an airy off-white canvas (#f5f6f9), and digital indigo primary actions.
+        </p>
+        <div class="hero-meta-row">
+          <div class="hero-meta-item">
+            <strong>Canvas:</strong> #f5f6f9
+          </div>
+          <div class="hero-meta-item">
+            <strong>Primary Action:</strong> #4f46e5 (Indigo)
+          </div>
+          <div class="hero-meta-item">
+            <strong>Headings:</strong> Plus Jakarta Sans
+          </div>
+          <div class="hero-meta-item">
+            <strong>Lab Figures:</strong> JetBrains Mono
+          </div>
+          <div class="hero-meta-item">
+            <strong>Cards:</strong> 20px - 24px Squircle
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================
+         SECTION 1: COLOR FOUNDATIONS & PALETTE TOKENS
+         ============================================================= -->
+    <section id="foundations" class="section-block">
+      <div class="section-header">
+        <div>
+          <h3 class="section-header-title">1. Color Palette Tokens</h3>
+          <p class="section-header-desc">Click any swatch to copy its hexadecimal token code to clipboard.</p>
+        </div>
+      </div>
+
+      <div class="color-grid">
+        <!-- Canvas & Surfaces -->
+        <div class="swatch-card" onclick="copyToken('#f5f6f9', 'background-canvas')">
+          <div class="swatch-preview" style="background: #f5f6f9;"></div>
+          <div class="swatch-name">Canvas Background</div>
+          <div class="swatch-hex"><span>#f5f6f9</span> <span>📋</span></div>
+          <div class="swatch-role">Base application canvas fill</div>
+        </div>
+
+        <div class="swatch-card" onclick="copyToken('#ffffff', 'surface-card')">
+          <div class="swatch-preview" style="background: #ffffff; border: 1px solid #e2e8f0;"></div>
+          <div class="swatch-name">Surface Card</div>
+          <div class="swatch-hex"><span>#ffffff</span> <span>📋</span></div>
+          <div class="swatch-role">Primary cards & modal viewports</div>
+        </div>
+
+        <div class="swatch-card" onclick="copyToken('#f8fafc', 'surface-subtle')">
+          <div class="swatch-preview" style="background: #f8fafc;"></div>
+          <div class="swatch-name">Surface Subtle</div>
+          <div class="swatch-hex"><span>#f8fafc</span> <span>📋</span></div>
+          <div class="swatch-role">Read-only inputs, tiles & filters</div>
+        </div>
+
+        <!-- Brand & Interactive Accent -->
+        <div class="swatch-card" onclick="copyToken('#4f46e5', 'primary-indigo')">
+          <div class="swatch-preview" style="background: #4f46e5;"></div>
+          <div class="swatch-name">Primary Indigo</div>
+          <div class="swatch-hex"><span>#4f46e5</span> <span>📋</span></div>
+          <div class="swatch-role">Primary buttons, links & focus rings</div>
+        </div>
+
+        <div class="swatch-card" onclick="copyToken('#4338ca', 'primary-hover')">
+          <div class="swatch-preview" style="background: #4338ca;"></div>
+          <div class="swatch-name">Primary Hover</div>
+          <div class="swatch-hex"><span>#4338ca</span> <span>📋</span></div>
+          <div class="swatch-role">Active hover state for primary triggers</div>
+        </div>
+
+        <div class="swatch-card" onclick="copyToken('#eef2ff', 'primary-subtle')">
+          <div class="swatch-preview" style="background: #eef2ff;"></div>
+          <div class="swatch-name">Primary Subtle</div>
+          <div class="swatch-hex"><span>#eef2ff</span> <span>📋</span></div>
+          <div class="swatch-role">Selected nav items & callout cards</div>
+        </div>
+
+        <div class="swatch-card" onclick="copyToken('#06b6d4', 'accent-cyan')">
+          <div class="swatch-preview" style="background: #06b6d4;"></div>
+          <div class="swatch-name">Accent Cyan</div>
+          <div class="swatch-hex"><span>#06b6d4</span> <span>📋</span></div>
+          <div class="swatch-role">AI co-pilot glow & secondary tags</div>
+        </div>
+
+        <div class="swatch-card" onclick="copyToken('#a855f7', 'accent-purple')">
+          <div class="swatch-preview" style="background: #a855f7;"></div>
+          <div class="swatch-name">Accent Purple</div>
+          <div class="swatch-hex"><span>#a855f7</span> <span>📋</span></div>
+          <div class="swatch-role">Multimodal highlights & gradient aura</div>
+        </div>
+
+        <!-- Clinical & Status Tiers -->
+        <div class="swatch-card" onclick="copyToken('#10b981', 'status-success')">
+          <div class="swatch-preview" style="background: #10b981;"></div>
+          <div class="swatch-name">Status Success</div>
+          <div class="swatch-hex"><span>#10b981</span> <span>📋</span></div>
+          <div class="swatch-role">Adherence tags & normal lab flags</div>
+        </div>
+
+        <div class="swatch-card" onclick="copyToken('#f97316', 'status-warning')">
+          <div class="swatch-preview" style="background: #f97316;"></div>
+          <div class="swatch-name">Status Warning</div>
+          <div class="swatch-hex"><span>#f97316</span> <span>📋</span></div>
+          <div class="swatch-role">Urgent refills & pending tests</div>
+        </div>
+
+        <div class="swatch-card" onclick="copyToken('#ef4444', 'status-danger')">
+          <div class="swatch-preview" style="background: #ef4444;"></div>
+          <div class="swatch-name">Status Danger</div>
+          <div class="swatch-hex"><span>#ef4444</span> <span>📋</span></div>
+          <div class="swatch-role">Critical alerts & contraindications</div>
+        </div>
+
+        <div class="swatch-card" onclick="copyToken('#3b82f6', 'status-info')">
+          <div class="swatch-preview" style="background: #3b82f6;"></div>
+          <div class="swatch-name">Status Info</div>
+          <div class="swatch-hex"><span>#3b82f6</span> <span>📋</span></div>
+          <div class="swatch-role">Diagnostic status & informational chips</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================
+         SECTION 2: TYPOGRAPHY HIERARCHY
+         ============================================================= -->
+    <section id="typography" class="section-block">
+      <div class="section-header">
+        <div>
+          <h3 class="section-header-title">2. Typography Hierarchy</h3>
+          <p class="section-header-desc">Dual font strategy: Plus Jakarta Sans for UI + JetBrains Mono for clinical lab telemetry.</p>
+        </div>
+      </div>
+
+      <div class="type-spec-card">
+        <div class="type-row">
+          <span class="type-role">Display</span>
+          <span class="type-metrics">24px / 32px • Bold 700</span>
+          <span style="font-size: 24px; font-weight: 700; line-height: 32px;">Patient Clinical Trajectory</span>
+        </div>
+        <div class="type-row">
+          <span class="type-role">Title</span>
+          <span class="type-metrics">18px / 26px • Semi-bold 600</span>
+          <span style="font-size: 18px; font-weight: 600; line-height: 26px;">Tangri 4-Variable KFRE Assessment</span>
+        </div>
+        <div class="type-row">
+          <span class="type-role">Subtitle</span>
+          <span class="type-metrics">15px / 22px • Semi-bold 600</span>
+          <span style="font-size: 15px; font-weight: 600; line-height: 22px;">Dapagliflozin 10mg + Telmisartan 40mg Order Set</span>
+        </div>
+        <div class="type-row">
+          <span class="type-role">Body</span>
+          <span class="type-metrics">14px / 20px • Regular 400</span>
+          <span style="font-size: 14px; font-weight: 400; line-height: 20px;">Patient shows rapid eGFR slope loss of -5.2 mL/min/1.73m² over the last 14 months with UACR 310 mg/g.</span>
+        </div>
+        <div class="type-row">
+          <span class="type-role">Caption</span>
+          <span class="type-metrics">12px / 16px • Medium 500</span>
+          <span style="font-size: 12px; font-weight: 500; line-height: 16px; color: var(--color-text-secondary);">Last updated 18 minutes ago via Central Diagnostic Labs</span>
+        </div>
+        <div class="type-row">
+          <span class="type-role">Micro</span>
+          <span class="type-metrics">10px / 14px • Bold 600 Uppercase</span>
+          <span style="font-size: 10px; font-weight: 700; line-height: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted);">KDIGO G3a / A3 SEVERE MICROALBUMINURIA</span>
+        </div>
+        <div class="type-row" style="background: #fafbfc;">
+          <span class="type-role">Mono Lab</span>
+          <span class="type-metrics">13px • JetBrains Mono</span>
+          <span class="font-mono" style="font-size: 14px; font-weight: 600; color: var(--color-primary-indigo);">
+            eGFR: 42.4 mL/min/1.73m² | sCr: 1.82 mg/dL | KFRE 2-Yr: 18.4%
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================
+         SECTION 3: BUTTONS & STATUS BADGES
+         ============================================================= -->
+    <section id="buttons" class="section-block">
+      <div class="section-header">
+        <div>
+          <h3 class="section-header-title">3. Buttons & Badges</h3>
+          <p class="section-header-desc">Pill-shaped (9999px) action triggers with 44px touch targets and tactile active clicks.</p>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 24px;">
+        <!-- Button Variants Card -->
+        <div class="card">
+          <div class="card-title">Interactive Buttons</div>
+          <div class="card-desc">Tactile pill buttons conforming to Mediora specification.</div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px;">
+            <button class="btn btn-primary" onclick="showToast('Primary Indigo Pill Clicked')">
+              Primary Indigo
+            </button>
+            <button class="btn btn-secondary" onclick="showToast('Secondary Charcoal Pill Clicked')">
+              Secondary Slate
+            </button>
+            <button class="btn btn-subtle" onclick="showToast('Subtle Pill Clicked')">
+              Subtle Indigo
+            </button>
+            <button class="btn btn-outline" onclick="showToast('Outline Pill Clicked')">
+              Outline Pill
+            </button>
+            <button class="btn btn-success" onclick="showToast('Success Pill Clicked')">
+              Ready / Confirm
+            </button>
+            <button class="btn btn-danger" onclick="showToast('Danger Pill Clicked')">
+              Contraindicated
+            </button>
+          </div>
+
+          <div style="border-top: 1px solid var(--color-border-card); padding-top: 16px;">
+            <div style="font-size: 12px; font-weight: 700; margin-bottom: 10px; color: var(--color-text-secondary);">
+              SIZES & ICON BUTTONS (44px Minimum Touch Standard)
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <button class="btn btn-primary btn-sm">Small (36px)</button>
+              <button class="btn btn-primary">Standard (44px)</button>
+              <button class="btn btn-primary btn-lg">Large (48px)</button>
+              <button class="btn btn-outline btn-icon" title="View Details">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Badges & Pill Indicators Card -->
+        <div class="card">
+          <div class="card-title">Clinical Status Badges & Pills</div>
+          <div class="card-desc">Semantic status badges paired with label and dot indicator.</div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px;">
+            <span class="badge badge-success">
+              <span class="dot-indicator"></span> + 10 days remain
+            </span>
+            <span class="badge badge-warning">
+              <span class="dot-indicator"></span> + 3 days remain (Refill)
+            </span>
+            <span class="badge badge-danger">
+              <span class="dot-indicator"></span> Contraindication Alert
+            </span>
+            <span class="badge badge-info">
+              <span class="dot-indicator"></span> Pending Lab Report
+            </span>
+            <span class="badge badge-indigo">
+              <span class="dot-indicator"></span> KDIGO Guideline Adherent
+            </span>
+            <span class="badge badge-cyan">
+              <span class="dot-indicator"></span> eGFR Slope Active
+            </span>
+            <span class="badge badge-purple">
+              <span class="dot-indicator"></span> AI Co-Pilot Recommendation
+            </span>
+          </div>
+
+          <div style="background: var(--color-surface-subtle); border-radius: var(--radius-md); padding: 14px; border: 1px solid var(--color-border-subtle);">
+            <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-secondary); margin-bottom: 6px;">
+              Design Rule:
+            </div>
+            <p style="font-size: 12px; color: var(--color-text-secondary); line-height: 17px;">
+              Never rely on color alone for clinical indicators. Every badge pairs a semantic tint with an explicit status label or icon.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================
+         SECTION 4: FORM INPUTS & SEARCH CONTROLS
+         ============================================================= -->
+    <section id="inputs" class="section-block">
+      <div class="section-header">
+        <div>
+          <h3 class="section-header-title">4. Form Inputs & Controls</h3>
+          <p class="section-header-desc">Inputs feature 12px–16px squircle radius, clean #f8fafc fills, and clear validation states.</p>
+        </div>
+      </div>
+
+      <div class="card" style="max-width: 840px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <!-- Standard Form Input -->
+          <div class="form-group">
+            <label class="form-label">Serum Creatinine Value (mg/dL)</label>
+            <input type="text" class="form-input" value="1.82" placeholder="e.g. 1.2">
+            <span class="form-hint">Baseline from routine primary care panel</span>
+          </div>
+
+          <!-- Input with Error State -->
+          <div class="form-group">
+            <label class="form-label">Blood Pressure Systolic (mmHg)</label>
+            <input type="text" class="form-input error" value="168" placeholder="e.g. 120">
+            <div class="form-error-msg">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              Exceeds KDIGO Stage 2 threshold (&gt;140 mmHg)
+            </div>
+          </div>
+
+          <!-- Select Dropdown -->
+          <div class="form-group">
+            <label class="form-label">Urine Dipstick Protein Flag</label>
+            <select class="form-input">
+              <option>Negative / Trace (&lt;15 mg/dL)</option>
+              <option selected>+1 (30 - 100 mg/dL)</option>
+              <option>+2 (100 - 300 mg/dL)</option>
+              <option>+3 (&gt;300 mg/dL)</option>
+            </select>
+          </div>
+
+          <!-- Pill Search Input Variant -->
+          <div class="form-group">
+            <label class="form-label">Medication Search Pill</label>
+            <div style="position: relative;">
+              <input type="text" class="form-input" style="border-radius: var(--radius-full); padding-left: 38px;" placeholder="Search SGLT2i, ARB, or ACEi...">
+              <span style="position: absolute; left: 14px; top: 13px; color: var(--color-text-muted);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================
+         SECTION 5: CLINICAL & MEDICATION CARDS
+         ============================================================= -->
+    <section id="clinical-cards" class="section-block">
+      <div class="section-header">
+        <div>
+          <h3 class="section-header-title">5. Medication & Specialist Cards</h3>
+          <p class="section-header-desc">Extracted directly from Mediora clinical reference modules.</p>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+
+        <!-- Medication Card 1 (Warning Refill) -->
+        <div class="medication-card">
+          <div class="medication-asset-frame">
+            <div class="floating-refill-badge">
+              <span class="badge badge-warning">
+                <span class="dot-indicator"></span> + 3 days remain
+              </span>
+            </div>
+            <!-- Medication Pill Bottle Illustration -->
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-indigo)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.5 20.5l10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"></path>
+              <path d="m8.5 8.5 7 7"></path>
+            </svg>
+          </div>
+          <div class="med-name">Dapagliflozin (Farxiga)</div>
+          <div class="med-strength">10 mg Oral Tablet</div>
+          <div class="med-dosage">1 tablet daily in morning with water. SGLT2 inhibitor for renal trajectory stabilization.</div>
+          <div style="margin-top: 16px; display: flex; gap: 8px;">
+            <button class="btn btn-primary btn-sm" style="flex: 1;" onclick="showToast('Refill order generated for Dapagliflozin')">
+              Refill Order
+            </button>
+            <button class="btn btn-outline btn-sm btn-icon" title="View Interactions">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Medication Card 2 (Adherent Green) -->
+        <div class="medication-card">
+          <div class="medication-asset-frame">
+            <div class="floating-refill-badge">
+              <span class="badge badge-success">
+                <span class="dot-indicator"></span> + 10 days remain
+              </span>
+            </div>
+            <!-- Medication Pill Bottle Illustration -->
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="16" height="20" x="4" y="2" rx="4"></rect>
+              <path d="M8 6h8"></path>
+              <path d="M8 10h8"></path>
+              <path d="M10 15h4"></path>
+            </svg>
+          </div>
+          <div class="med-name">Telmisartan (Micardis)</div>
+          <div class="med-strength">40 mg Oral Tablet</div>
+          <div class="med-dosage">Once daily at bedtime. Angiotensin Receptor Blocker (ARB) for intraglomerular pressure control.</div>
+          <div style="margin-top: 16px; display: flex; gap: 8px;">
+            <button class="btn btn-outline btn-sm" style="flex: 1;" onclick="showToast('Telmisartan dosage verified')">
+              Verified Adherent
+            </button>
+            <button class="btn btn-outline btn-sm btn-icon" title="View Interactions">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Provider Card -->
+        <div class="provider-card">
+          <div class="provider-header">
+            <div class="provider-avatar-frame">
+              DR
+            </div>
+            <div>
+              <div class="provider-name">Dr. Sarah Al-Mansoori, MD</div>
+              <span class="badge badge-indigo" style="margin-top: 4px;">
+                Consultant Nephrologist
+              </span>
+            </div>
+          </div>
+
+          <div class="metrics-bar">
+            <div>
+              <div class="metrics-cell-label">Rating</div>
+              <div class="metrics-cell-value">★ 4.9 / 5.0</div>
+            </div>
+            <div>
+              <div class="metrics-cell-label">Experience</div>
+              <div class="metrics-cell-value">14 Yrs</div>
+            </div>
+            <div>
+              <div class="metrics-cell-label">Reviews</div>
+              <div class="metrics-cell-value">128 Docs</div>
+            </div>
+          </div>
+
+          <div class="provider-footer-actions">
+            <button class="btn btn-primary" style="flex: 1;" onclick="openLabModal()">
+              Book a Call
+            </button>
+            <button class="btn btn-outline btn-icon" title="View Doctor Profile" onclick="showToast('Viewing Dr. Sarah Al-Mansoori credentials')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =============================================================
+         SECTION 6: AI CO-PILOT ASSISTANT CARD
+         ============================================================= -->
+    <section id="ai-copilot" class="section-block">
+      <div class="section-header">
+        <div>
+          <h3 class="section-header-title">6. AI Co-Pilot Assistant Card</h3>
+          <p class="section-header-desc">3D blue speech bubble mascot with pill eyes, pastel cyan-purple aura gradient, and multimodal prompt bar.</p>
+        </div>
+      </div>
+
+      <div style="max-width: 640px;">
+        <div class="ai-copilot-card">
+          <div class="ai-aura-background"></div>
+
+          <div class="ai-card-content">
+            <div class="ai-mascot-row">
+              <div class="ai-mascot-3d">
+                <!-- Friendly 3D Speech Bubble Mascot -->
+                <div class="ai-mascot-eyes">
+                  <div class="ai-eye-pill"></div>
+                  <div class="ai-eye-pill"></div>
+                </div>
+              </div>
+              <div>
+                <h4 style="font-size: 17px; font-weight: 700; color: var(--color-text-primary);">
+                  Good Morning, Dr. Chen
+                </h4>
+                <p style="font-size: 13px; color: var(--color-text-secondary); margin-top: 2px;">
+                  How can I assist your clinical decision-making today?
+                </p>
+              </div>
+            </div>
+
+            <div class="ai-prompt-chips-grid">
+              <div class="ai-action-chip" onclick="showToast('Analyzing 14 patients with eGFR slope drop > -5 mL/min')">
+                <span>⚡ Review 14 patients with eGFR slope loss &gt; -5 mL/min</span>
+                <span>›</span>
+              </div>
+              <div class="ai-action-chip" onclick="showToast('Generating GDMT order set recommendation')">
+                <span>💊 Check SGLT2i + ARB contraindication criteria</span>
+                <span>›</span>
+              </div>
+              <div class="ai-action-chip" onclick="openLabModal()">
+                <span>📋 Track confirmatory UACR lab result for Patient #8241</span>
+                <span>›</span>
+              </div>
+            </div>
+
+            <!-- Bottom Multimodal Prompt Bar -->
+            <div class="ai-prompt-bar">
+              <input type="text" class="ai-prompt-input" placeholder="Ask Mediora AI co-pilot anything...">
+              <div class="ai-prompt-tools">
+                <button class="tool-btn" title="Attach Document" onclick="showToast('Document upload triggered')">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+                  </svg>
+                </button>
+                <button class="tool-btn" title="Voice Input" onclick="showToast('Microphone listening...')">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                    <line x1="12" y1="19" x2="12" y2="23"></line>
+                    <line x1="8" y1="23" x2="16" y2="23"></line>
+                  </svg>
+                </button>
+                <button class="btn btn-primary btn-sm btn-icon" style="width: 34px; height: 34px;" onclick="showToast('Prompt sent to Mediora Copilot')">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================
+         SECTION 7: CLINICAL MODAL DIALOG PREVIEW
+         ============================================================= -->
+    <section id="lab-modal" class="section-block">
+      <div class="section-header">
+        <div>
+          <h3 class="section-header-title">7. Clinical Modal Dialog (Interactive)</h3>
+          <p class="section-header-desc">28px squircle geometry, blurred backdrop, structured laboratory table, bold indigo JetBrains Mono values.</p>
+        </div>
+        <button class="btn btn-primary" onclick="openLabModal()">
+          Open Live Clinical Modal Dialog
+        </button>
+      </div>
+
+      <div class="card" style="max-width: 620px; background: #fafbfc; border: 2px dashed #cbd5e1;">
+        <div style="text-align: center; padding: 24px;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--color-primary-subtle); color: var(--color-primary-indigo); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 12px;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <h4 style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">Laboratory Test Diagnostics View</h4>
+          <p style="font-size: 13px; color: var(--color-text-secondary); max-width: 440px; margin: 0 auto 18px;">
+            Click the button below to test the live overlay with 28px rounded container, dark blurred backdrop, and tabular measurement formatting.
+          </p>
+          <button class="btn btn-primary" onclick="openLabModal()">
+            Launch Lab Modal Dialog (Track Result)
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================
+         SECTION 8: FULL SHELL ARCHITECTURE PREVIEW
+         ============================================================= -->
+    <section id="shell-layout" class="section-block">
+      <div class="section-header">
+        <div>
+          <h3 class="section-header-title">8. Complete Shell Architecture</h3>
+          <p class="section-header-desc">
+            Asymmetric 3-column layout: Fixed Left Sidebar (240px) + Main Working Stage + Persistent Right AI Rail (320px).
+          </p>
+        </div>
+      </div>
+
+      <div class="shell-preview-frame">
+        <div class="shell-container">
+
+          <!-- Left Sidebar Column -->
+          <aside class="shell-sidebar">
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 32px; height: 32px; border-radius: 10px; background: var(--color-primary-indigo); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px;">
+                  RP
+                </div>
+                <div>
+                  <div style="font-size: 14px; font-weight: 800; color: var(--color-text-primary);">RENAL-PULSE</div>
+                  <div style="font-size: 10px; color: var(--color-text-muted);">Mediora Shell v1.0</div>
+                </div>
+              </div>
+
+              <ul class="shell-nav-list">
+                <li class="shell-nav-item active">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+                    <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+                    <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+                    <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+                  </svg>
+                  <span>Population Triage</span>
+                </li>
+                <li class="shell-nav-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                  <span>Patients at Risk (14)</span>
+                </li>
+                <li class="shell-nav-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                  <span>WhatsApp Outreach</span>
+                </li>
+                <li class="shell-nav-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polygon points="12 6 12 12 16 14"></polygon>
+                  </svg>
+                  <span>Trajectory Slopes</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <!-- Security Guarantee Badge -->
+              <div class="shell-security-badge">
+                <div style="font-weight: 700; color: var(--color-text-primary); margin-bottom: 2px; display: flex; align-items: center; gap: 4px;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5">
+                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  Encrypted & Protected
+                </div>
+                End-to-end HIPAA / DoH Abu Dhabi compliant health data storage.
+              </div>
+
+              <!-- Docked Doctor Profile Pill -->
+              <div style="display: flex; align-items: center; gap: 10px; margin-top: 14px; padding: 6px; border-radius: var(--radius-full); background: var(--color-surface-subtle); border: 1px solid var(--color-border-card);">
+                <div style="width: 32px; height: 32px; border-radius: 50%; background: #e0e7ff; color: var(--color-primary-indigo); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 11px;">
+                  DR
+                </div>
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-size: 12px; font-weight: 700; color: var(--color-text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Dr. Sarah Chen</div>
+                  <div style="font-size: 10px; color: var(--color-text-secondary);">Primary Care Physician</div>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Center Stage Column -->
+          <main class="shell-stage">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+              <div>
+                <h4 style="font-size: 18px; font-weight: 800; color: var(--color-text-primary);">High-Risk Interception Queue</h4>
+                <p style="font-size: 12px; color: var(--color-text-secondary); margin-top: 2px;">Filtered for CKD-EPI slope loss &gt; 5 mL/min/year with unconfirmed proteinuria</p>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="openLabModal()">
+                + Order Confirmatory UACR
+              </button>
+            </div>
+
+            <!-- Mini Triage Table -->
+            <div style="background: white; border-radius: var(--radius-lg); border: 1px solid var(--color-border-card); overflow: hidden; box-shadow: var(--shadow-card);">
+              <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                <thead>
+                  <tr style="background: var(--color-surface-subtle); border-bottom: 1px solid var(--color-border-subtle); text-align: left;">
+                    <th style="padding: 10px 14px; font-size: 11px; color: var(--color-text-secondary); font-weight: 700;">PATIENT</th>
+                    <th style="padding: 10px 14px; font-size: 11px; color: var(--color-text-secondary); font-weight: 700;">eGFR SLOPE</th>
+                    <th style="padding: 10px 14px; font-size: 11px; color: var(--color-text-secondary); font-weight: 700;">KFRE 2-YR</th>
+                    <th style="padding: 10px 14px; font-size: 11px; color: var(--color-text-secondary); font-weight: 700;">GDMT STATUS</th>
+                    <th style="padding: 10px 14px; font-size: 11px; color: var(--color-text-secondary); font-weight: 700; text-align: right;">ACTION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1px solid var(--color-border-card);">
+                    <td style="padding: 12px 14px;">
+                      <div style="font-weight: 700;">Budi Santoso (M, 58)</div>
+                      <div style="font-size: 11px; color: var(--color-text-muted);">BPJS #00291049</div>
+                    </td>
+                    <td style="padding: 12px 14px;">
+                      <span class="font-mono" style="color: var(--color-status-danger-text); font-weight: 700;">-6.4 mL/min/yr</span>
+                    </td>
+                    <td style="padding: 12px 14px;">
+                      <span class="font-mono" style="font-weight: 700; color: var(--color-status-warning-text);">18.2%</span>
+                    </td>
+                    <td style="padding: 12px 14px;">
+                      <span class="badge badge-warning">Missing SGLT2i</span>
+                    </td>
+                    <td style="padding: 12px 14px; text-align: right;">
+                      <button class="btn btn-subtle btn-sm" onclick="openLabModal()">Order GDMT</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 12px 14px;">
+                      <div style="font-weight: 700;">Siti Rahma (F, 62)</div>
+                      <div style="font-size: 11px; color: var(--color-text-muted);">BPJS #00448190</div>
+                    </td>
+                    <td style="padding: 12px 14px;">
+                      <span class="font-mono" style="color: var(--color-status-danger-text); font-weight: 700;">-5.8 mL/min/yr</span>
+                    </td>
+                    <td style="padding: 12px 14px;">
+                      <span class="font-mono" style="font-weight: 700; color: var(--color-status-danger-text);">24.6%</span>
+                    </td>
+                    <td style="padding: 12px 14px;">
+                      <span class="badge badge-danger">Uncontrolled BP</span>
+                    </td>
+                    <td style="padding: 12px 14px; text-align: right;">
+                      <button class="btn btn-subtle btn-sm" onclick="openLabModal()">Order GDMT</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </main>
+
+          <!-- Right AI Co-Pilot Rail -->
+          <aside class="shell-right-rail">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 13px; font-weight: 700; color: var(--color-text-primary);">Mediora AI Assistant</span>
+              <span class="badge badge-indigo" style="font-size: 10px;">Active</span>
+            </div>
+
+            <!-- Mini AI Aura Card -->
+            <div style="background: var(--aura-gradient); border-radius: var(--radius-lg); padding: 16px; border: 1px solid rgba(79, 70, 229, 0.15);">
+              <div style="font-size: 12px; font-weight: 700; color: #3730a3; margin-bottom: 4px;">
+                💡 Clinical Insight Alert
+              </div>
+              <p style="font-size: 11px; color: #4338ca; line-height: 16px;">
+                Patient Budi Santoso's eGFR decline qualifies for immediate SGLT2i (Dapagliflozin 10mg) per KDIGO 2024 Practice Guidelines.
+              </p>
+            </div>
+
+            <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted);">
+              Recommended Order Sets
+            </div>
+
+            <button class="btn btn-outline btn-sm" style="width: 100%; justify-content: flex-start; text-align: left;" onclick="showToast('Selected Dapagliflozin 10mg Once Daily')">
+              💊 Dapagliflozin 10mg OD
+            </button>
+            <button class="btn btn-outline btn-sm" style="width: 100%; justify-content: flex-start; text-align: left;" onclick="showToast('Selected Telmisartan 40mg OD')">
+              🩺 Telmisartan 40mg OD
+            </button>
+            <button class="btn btn-primary btn-sm" style="width: 100%;" onclick="openLabModal()">
+              Sign & Commit Order Set
+            </button>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =============================================================
+       INTERACTIVE CLINICAL LAB MODAL (from DESIGN.md)
+       ============================================================= -->
+  <div class="modal-backdrop" id="clinicalModalBackdrop" onclick="handleBackdropClick(event)">
+    <div class="modal-container" role="dialog" aria-modal="true">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="modal-header-left">
+          <div class="modal-header-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
+          </div>
+          <div>
+            <h3 style="font-size: 17px; font-weight: 700; color: var(--color-text-primary);">
+              Comprehensive Renal Diagnostic Panel
+            </h3>
+            <p style="font-size: 12px; color: var(--color-text-secondary); margin-top: 2px;">
+              Central Diagnostic Labs • Oct 18, 2026 • 09:42 AM
+            </p>
+          </div>
+        </div>
+        <button class="btn-icon" style="color: var(--color-text-muted);" onclick="closeLabModal()" title="Close (Esc)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+          <div>
+            <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--color-text-muted);">PATIENT IDENTIFIER</span>
+            <div style="font-size: 14px; font-weight: 700; color: var(--color-text-primary);">Budi Santoso (BPJS #00291049)</div>
+          </div>
+          <span class="badge badge-warning">Stage 3a / High Risk</span>
+        </div>
+
+        <!-- Structured Laboratory Results Table -->
+        <table class="lab-table">
+          <thead>
+            <tr>
+              <th>Measurement</th>
+              <th>Observed Value</th>
+              <th>Reference Range</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Serum Creatinine</td>
+              <td>
+                <span class="lab-value-highlight">1.82 mg/dL</span>
+              </td>
+              <td style="color: var(--color-text-secondary);">0.70 – 1.30 mg/dL</td>
+            </tr>
+            <tr>
+              <td>CKD-EPI 2021 eGFR</td>
+              <td>
+                <span class="lab-value-highlight" style="color: var(--color-status-danger-text);">42.4 mL/min</span>
+              </td>
+              <td style="color: var(--color-text-secondary);">&gt; 90.0 mL/min</td>
+            </tr>
+            <tr>
+              <td>UACR (Albumin/Creatinine)</td>
+              <td>
+                <span class="lab-value-highlight" style="color: var(--color-status-warning-text);">310.0 mg/g</span>
+              </td>
+              <td style="color: var(--color-text-secondary);">&lt; 30.0 mg/g</td>
+            </tr>
+            <tr>
+              <td>Blood Pressure (Resting)</td>
+              <td>
+                <span class="lab-value-highlight">148 / 92 mmHg</span>
+              </td>
+              <td style="color: var(--color-text-secondary);">&lt; 130 / 80 mmHg</td>
+            </tr>
+            <tr>
+              <td>Serum Potassium (K+)</td>
+              <td>
+                <span class="lab-value-highlight" style="color: var(--color-status-success-text);">4.3 mEq/L</span>
+              </td>
+              <td style="color: var(--color-text-secondary);">3.5 – 5.0 mEq/L</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Reference Range Disclaimer Callout -->
+        <div class="clinical-callout-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0; margin-top: 1px;">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          <div>
+            <strong>KDIGO 2024 Clinical Practice Recommendation:</strong>
+            Serum potassium is within normal limits (&lt;5.0 mEq/L). Patient is clinically eligible for combination SGLT2i + ARB order set without hyperkalemia contraindication.
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeLabModal()">Dismiss</button>
+        <button class="btn btn-primary" onclick="trackResultAction()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Track Result & Deploy GDMT Order
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification element -->
+  <div class="toast" id="systemToast">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span id="toastMsg">Token copied</span>
+  </div>
+
+  <!-- =============================================================
+       INTERACTIVE JAVASCRIPT
+       ============================================================= -->
+  <script>
+    // Copy Token to Clipboard with Toast
+    function copyToken(hex, name) {
+      navigator.clipboard.writeText(hex).then(() => {
+        showToast(`Copied ${name} (${hex}) to clipboard!`);
+      }).catch(() => {
+        showToast(`${hex} selected`);
+      });
+    }
+
+    // Toast Notification Controller
+    let toastTimeout;
+    function showToast(message) {
+      const toast = document.getElementById('systemToast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2800);
+    }
+
+    // Modal Dialog Controls
+    function openLabModal() {
+      const modal = document.getElementById('clinicalModalBackdrop');
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLabModal() {
+      const modal = document.getElementById('clinicalModalBackdrop');
+      modal.classList.remove('open');
+      document.body.style.overflow = 'auto';
+    }
+
+    function handleBackdropClick(e) {
+      if (e.target.id === 'clinicalModalBackdrop') {
+        closeLabModal();
+      }
+    }
+
+    function trackResultAction() {
+      closeLabModal();
+      showToast('✓ Track Result: Confirmatory UACR ordered & GDMT committed!');
+    }
+
+    // Keyboard Shortcuts (Esc to close modal, ⌘S / ⌘K to focus search)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLabModal();
+      }
+      if ((e.metaKey || e.ctrlKey) && (e.key === 's' || e.key === 'k')) {
+        e.preventDefault();
+        const search = document.getElementById('headerSearchInput');
+        search.focus();
+        showToast('Search input focused (⌘S)');
+      }
+    });
+
+    // Navigation Tab Smooth Scrolling & Active State
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

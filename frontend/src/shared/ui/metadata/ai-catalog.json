@@ -1,0 +1,47 @@
+{
+  "version": "1.0.0",
+  "designSystem": "mediora-clinical-design-system",
+  "description": "Machine-readable component metadata and AI guardrails for RENAL-PULSE clinical copilot.",
+  "components": {
+    "Card": {
+      "file": "src/shared/ui/card.tsx",
+      "metaFile": "src/shared/ui/metadata/card.meta.ts",
+      "description": "Compound container component implementing Mediora squircle geometry (rounded-2xl), ambient diffuse elevation, and structured clinical content slots.",
+      "category": "molecules",
+      "type": "container",
+      "wcag": "AA"
+    },
+    "Modal": {
+      "file": "src/shared/ui/modal.tsx",
+      "metaFile": "src/shared/ui/metadata/modal.meta.ts",
+      "description": "Accessible clinical dialog overlay featuring 28px deep squircle curvature, ambient diffuse elevation, blurred backdrop, body scroll lock, and ESC key listener.",
+      "category": "organisms",
+      "type": "container",
+      "wcag": "AA"
+    },
+    "Badge": {
+      "file": "src/shared/ui/badge.tsx",
+      "metaFile": "src/shared/ui/metadata/badge.meta.ts",
+      "description": "Pill-shaped indicator badge supporting Mediora interface status tiers and KDIGO 2024 clinical risk categories with animated rapid-progressor pulse.",
+      "category": "atoms",
+      "type": "display",
+      "wcag": "AA"
+    },
+    "Button": {
+      "file": "src/shared/ui/button.tsx",
+      "metaFile": "src/shared/ui/metadata/button.meta.ts",
+      "description": "Universal interactive button primitive supporting Mediora clinical design language with pill and rounded squircle geometries, subtle elevation, and dual focus rings.",
+      "category": "atoms",
+      "type": "interactive",
+      "wcag": "AA"
+    },
+    "Input": {
+      "file": "src/shared/ui/input.tsx",
+      "metaFile": "src/shared/ui/metadata/input.meta.ts",
+      "description": "Accessible form input supporting Mediora pill and rounded geometries, integrated icons, inset label hierarchy, and explicit error message presentation.",
+      "category": "atoms",
+      "type": "input",
+      "wcag": "AA"
+    }
+  }
+}

@@ -1,4 +1,4 @@
-.PHONY: setup dev dev-fe dev-be test test-fe test-be check synth clean help
+.PHONY: setup dev dev-fe dev-be test test-fe test-be check check-ds synth clean help
 
 help:
 	@echo "RENAL-PULSE Developer Workflow:"
@@ -9,7 +9,8 @@ help:
 	@echo "  make test      - Run all tests (backend & frontend)"
 	@echo "  make test-be   - Run backend pytest suite"
 	@echo "  make test-fe   - Run frontend tests"
-	@echo "  make check     - Run all type checks, linters, and tests"
+	@echo "  make check-ds  - Validate Design System AI metadata & parity"
+	@echo "  make check     - Run all type checks, linters, tests, and DS metadata verification"
 	@echo "  make synth     - Generate 100 synthetic patient records"
 	@echo "  make clean     - Remove caches and temporary files"
 
@@ -36,7 +37,11 @@ test-fe:
 	@echo "==> Running frontend test suite..."
 	cd frontend && npm run test
 
-check: test-be test-fe
+check-ds:
+	@echo "==> Validating Design System AI metadata & parity..."
+	python3 scripts/validate_ai_metadata.py
+
+check: check-ds test-be test-fe
 	@echo "==> All quality gates passed!"
 
 synth:

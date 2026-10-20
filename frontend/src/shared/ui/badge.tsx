@@ -8,14 +8,18 @@ const badgeVariants = cva(
     variants: {
       variant: {
         default: 'border-transparent bg-slate-900 text-slate-50',
-        secondary: 'border-transparent bg-slate-100 text-slate-900',
-        outline: 'text-slate-950 border border-slate-200',
+        secondary: 'border-transparent bg-slate-100 text-slate-800',
+        outline: 'text-slate-700 border border-slate-200 bg-white',
+        // Mediora Status & Accent Tiers
+        indigo: 'bg-indigo-50 text-indigo-700 border border-indigo-200',
+        cyan: 'bg-cyan-50 text-cyan-700 border border-cyan-200',
+        purple: 'bg-purple-50 text-purple-700 border border-purple-200',
         // KDIGO & Clinical Risk Tiers
-        green: 'bg-emerald-50 text-emerald-700 border border-emerald-200',
-        yellow: 'bg-amber-50 text-amber-700 border border-amber-200',
-        orange: 'bg-orange-50 text-orange-700 border border-orange-200',
-        red: 'bg-rose-50 text-rose-700 border border-rose-200',
-        rapid: 'bg-rose-100 text-rose-800 border border-rose-300 font-bold animate-pulse',
+        green: 'bg-emerald-50 text-emerald-800 border border-emerald-200/80',
+        yellow: 'bg-amber-50 text-amber-800 border border-amber-200/80',
+        orange: 'bg-orange-50 text-orange-800 border border-orange-200/80',
+        red: 'bg-rose-50 text-rose-800 border border-rose-200/80',
+        rapid: 'bg-rose-100/80 text-rose-800 border border-rose-300 font-semibold',
       },
     },
     defaultVariants: {

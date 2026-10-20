@@ -9,7 +9,7 @@ import {
   CheckCheck,
   Play,
   Calendar,
-  Sparkles,
+  User,
   ShieldCheck,
 } from 'lucide-react';
 
@@ -107,7 +107,7 @@ export function WhatsAppSimulator({ patient }: Props) {
   };
 
   return (
-    <Card className="max-w-md mx-auto shadow-xl border-slate-300 overflow-hidden rounded-2xl bg-slate-900 text-white">
+    <Card className="max-w-md w-full mx-auto shadow-[0_20px_40px_-12px_rgba(0,0,0,0.12)] border-slate-200 overflow-hidden rounded-3xl bg-slate-900 text-white">
       {/* Smartphone Top Notch & Header */}
       <div className="bg-[#075e54] px-4 py-3 flex items-center justify-between shadow-sm">
         <div className="flex items-center gap-3">
@@ -138,8 +138,8 @@ export function WhatsAppSimulator({ patient }: Props) {
 
       {/* Language Switcher Bar */}
       <div className="bg-[#128c7e] px-4 py-1.5 flex items-center justify-between text-xs text-emerald-50">
-        <span className="text-[11px] font-medium flex items-center gap-1">
-          <Sparkles className="h-3.5 w-3.5" />
+        <span className="text-[11px] font-medium flex items-center gap-1.5">
+          <User className="h-3 w-3" />
           Patient: {patient.name} ({patient.patient_id})
         </span>
         <div className="flex gap-1">

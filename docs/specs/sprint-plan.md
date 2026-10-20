@@ -51,7 +51,23 @@ flowchart LR
 
 ## 3. Sprint Breakdown & Milestones
 
+### Phase 0: Design System Governance & AI-Ready Component Foundation
+> **Specification:** [`docs/DESIGN_SYSTEM_GOVERNANCE.md`](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/DESIGN_SYSTEM_GOVERNANCE.md) | [`DESIGN.md`](file:///Users/mb-rci-backup/Documents/antigravity/future-health/DESIGN.md)  
+> **Status:** `Completed`  
+* **Goal:** Establish a robust design system governance model, clinical usability gates, and machine-readable AI component metadata to guarantee safe, deterministic UI generation across all application slices.
+* **Deliverables:**
+  1. **Canonical Governance Manual (`docs/DESIGN_SYSTEM_GOVERNANCE.md`):** Hybrid ownership, 7-stage RFC lifecycle, DACI decision rights, semantic versioning, and deprecation protocols.
+  2. **Core Clinical Primitives (`frontend/src/shared/ui/`):** React 19 primitives (`Button`, `Card`, `Badge`, `Input`, `Modal`) strictly honoring Mediora squircle geometry and token boundaries.
+  3. **Machine-Readable AI Metadata (`frontend/src/shared/ui/metadata/`):** Structured metadata for each primitive conforming to the `/ai-component-metadata` standard, detailing runnable patterns, explicit anti-patterns, ARIA semantics, and prompt context.
+  4. **Automated Verification Pipeline (`scripts/validate_ai_metadata.py` / `make check-ds`):** CI gate validating 1-to-1 component-metadata parity and compiling `ai-catalog.json`.
+  5. **Agent Governance Rules (`.agents/rules/30-frontend.md`):** Mandate for autonomous coding agents to inspect metadata and adhere to zero ad-hoc styling and clinical dual-encoding rules.
+* **Success Gate:** `make check-ds` passes with 100% component-to-metadata parity and zero schema errors.
+
+---
+
 ### Phase 1: Algorithmic Trajectory Engine (Backend / Python FastAPI)
+> **Specification:** [`docs/specs/001-algorithmic-trajectory-engine.md`](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/specs/001-algorithmic-trajectory-engine.md)  
+> **Spec Kit:** [`specs/001-algorithmic-trajectory-engine/spec.md`](file:///Users/mb-rci-backup/Documents/antigravity/future-health/specs/001-algorithmic-trajectory-engine/spec.md) | [Plan](file:///Users/mb-rci-backup/Documents/antigravity/future-health/specs/001-algorithmic-trajectory-engine/plan.md) | [Tasks](file:///Users/mb-rci-backup/Documents/antigravity/future-health/specs/001-algorithmic-trajectory-engine/tasks.md)  
 * **Goal:** Deliver mathematically rigorous, benchmark-tested clinical services adhering to KDIGO 2024 and Tangri JAMA 2016.
 * **Tasks:**
   1. `tests/test_ckd_epi.py`: Write test fixtures with verified published eGFR values (NEJM 2021).
@@ -69,6 +85,8 @@ flowchart LR
 ---
 
 ### Phase 2: Doctor Clinical Copilot Integration (Frontend / React 19)
+> **Specification:** [`docs/specs/002-doctor-clinical-copilot.md`](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/specs/002-doctor-clinical-copilot.md)  
+> **Spec Kit:** [`specs/002-doctor-clinical-copilot/spec.md`](file:///Users/mb-rci-backup/Documents/antigravity/future-health/specs/002-doctor-clinical-copilot/spec.md)  
 * **Goal:** Seamlessly integrate the clinical algorithms with the React 19 Doctor Copilot UI, overcoming therapeutic inertia within a 3–5 minute consult.
 * **Tasks:**
   1. **Dual-Mode System Context:** Build global context toggle in navigation header:
@@ -87,6 +105,8 @@ flowchart LR
 ---
 
 ### Phase 3: In-Browser WhatsApp Patient Engagement Simulator
+> **Specification:** [`docs/specs/003-whatsapp-simulator.md`](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/specs/003-whatsapp-simulator.md)  
+> **Spec Kit:** [`specs/003-whatsapp-simulator/spec.md`](file:///Users/mb-rci-backup/Documents/antigravity/future-health/specs/003-whatsapp-simulator/spec.md)  
 * **Goal:** Provide competition judges with an interactive, photorealistic simulation of patient engagement without needing physical phones or external SMS credentials.
 * **Tasks:**
   1. **WhatsApp Simulator Widget (`widgets/whatsapp-simulator`):**
@@ -104,6 +124,8 @@ flowchart LR
 ---
 
 ### Phase 4: Population Health Command Center & Markov Economic Engine
+> **Specification:** [`docs/specs/004-population-command-center.md`](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/specs/004-population-command-center.md)  
+> **Spec Kit:** [`specs/004-population-command-center/spec.md`](file:///Users/mb-rci-backup/Documents/antigravity/future-health/specs/004-population-command-center/spec.md)  
 * **Goal:** Deliver macro visibility and actuarial evidence for health system decision-makers.
 * **Tasks:**
   1. **Regional Risk Heatmap:** Interactive cardiorenal map displaying high-risk clusters across clinics/Puskesmas.

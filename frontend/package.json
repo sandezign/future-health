@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "check": "tsc -b",
+    "check:ds": "python3 ../scripts/validate_ai_metadata.py",
     "test": "vitest run",
     "test:watch": "vitest",
     "preview": "vite preview"

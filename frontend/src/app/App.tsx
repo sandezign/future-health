@@ -10,7 +10,7 @@ export function App() {
   return (
     <QueryProvider>
       <BrowserRouter>
-        <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
+        <div className="min-h-screen bg-canvas text-text-primary flex flex-col font-sans">
           <Header />
           <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
             <Routes>
@@ -29,8 +29,17 @@ export function App() {
                 <span>•</span>
                 <span>Future Health Digital Innovation Challenge 2026</span>
               </div>
-              <div className="text-[11px] text-slate-400">
-                Grounded in KDIGO 2024 Clinical Practice Guidelines & Tangri KFRE (JAMA 2016)
+              <div className="flex items-center gap-3 text-[11px] text-slate-400">
+                <span>Grounded in KDIGO 2024 Clinical Practice Guidelines & Tangri KFRE (JAMA 2016)</span>
+                <span>•</span>
+                <a
+                  href="/design-system.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-indigo-600 font-semibold hover:underline"
+                >
+                  HTML Design System
+                </a>
               </div>
             </div>
           </footer>

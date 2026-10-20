@@ -25,6 +25,8 @@ This file provides shared context for coding agents working in this repository. 
 | Clinical Formulas & Validation Criteria | `docs/CLINICAL_FORMULAS.md` |
 | Technical Architecture & Schemas | `docs/ARCHITECTURE.md` |
 | Data Model & Synthetic Schema | `data/schemas/patient_schema.json` |
+| Visual Design System & Tokens | `DESIGN.md` |
+| Design System Governance & AI Readiness | `docs/DESIGN_SYSTEM_GOVERNANCE.md` |
 | Frontend Conventions & FSD Rules | `.agents/rules/30-frontend.md` |
 | Clinical Decision Safety Rules | `.agents/rules/40-clinical-safety.md` |
 | Active Tasks & Sprints | `docs/specs/sprint-plan.md` |
