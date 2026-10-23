@@ -13,11 +13,12 @@
 2. [Guiding Principles](#2-guiding-principles)
 3. [Actor & Stakeholder Matrix](#3-actor--stakeholder-matrix)
 4. [Macro End-to-End System Flow](#4-macro-end-to-end-system-flow)
-5. [User Flow 1: Frontline Physician (Clinical Copilot)](#5-user-flow-1-frontline-physician-clinical-copilot)
-6. [User Flow 2: Asymptomatic Patient (WhatsApp Engagement Agent)](#6-user-flow-2-asymptomatic-patient-whatsapp-engagement-agent)
-7. [User Flow 3: Community Escalation Loop (Kader / CHW)](#7-user-flow-3-community-escalation-loop-kader--chw)
-8. [System Scope & Boundaries](#8-system-scope--boundaries)
-9. [Related Resources & Verification](#9-related-resources--verification)
+5. [User Flow 0: Physical-to-Digital Vision Ingestion (Snap-to-Care Gateway)](#5-user-flow-0-physical-to-digital-vision-ingestion-snap-to-care-gateway)
+6. [User Flow 1: Frontline Physician (Clinical Copilot)](#6-user-flow-1-frontline-physician-clinical-copilot)
+7. [User Flow 2: Asymptomatic Patient (WhatsApp Engagement Agent)](#7-user-flow-2-asymptomatic-patient-whatsapp-engagement-agent)
+8. [User Flow 3: Community Escalation Loop (Kader / CHW)](#8-user-flow-3-community-escalation-loop-kader--chw)
+9. [System Scope & Boundaries](#9-system-scope--boundaries)
+10. [Related Resources & Verification](#10-related-resources--verification)
 
 ---
 
@@ -48,7 +49,8 @@ This document formally specifies:
 | Actor / Persona | Primary Interface | Core Goal | Primary Friction Addressed |
 | :--- | :--- | :--- | :--- |
 | **Frontline Physician** *(Primary Care / Puskesmas)* | Web App (*Doctor Clinical Copilot*) | Identify rapid progressors and prescribe GDMT (SGLT2i + ARB) within a 3–5 min consult. | Therapeutic inertia and anxiety regarding transient hemodynamic creatinine dips. |
-| **Asymptomatic Patient** *(Hypertensive / Diabetic)* | Mobile Messaging (*WhatsApp Agent*) | Understand kidney vulnerability without panic, overcome pill fears, and confirm clinic booking. | The "Asymptomatic Trap"—denial of illness due to total lack of physical pain/swelling. |
+| **Triage Nurse / Intake Clerk** *(Primary Care / Outpatient)* | Mobile Tablet / Scanner Interface | Ingest external printed lab slips and verify OCR extractions in $<5\text{ seconds}$. | 15–20 minute manual data transcription backlog and missing external laboratory data. |
+| **Asymptomatic Patient** *(Hypertensive / Diabetic)* | Mobile Messaging (*WhatsApp Agent*) | Snap photo of paper lab slip, understand kidney vulnerability, and confirm clinic booking. | The "Asymptomatic Trap"—denial of illness due to total lack of physical pain/swelling. |
 | **Community Health Worker** *(Kader / CHW)* | Mobile Task Sheet / WhatsApp | Re-engage high-risk patients who have lapsed on prescriptions (>30 days) or missed visits. | Care fragmentation and patient loss to follow-up in the community. |
 | **Population Health Director** *(Payer / DoH / BPJS)* | Command Center Dashboard | Monitor regional risk heatmaps and track projected dialysis costs averted. | Unpredictable catastrophic claims and uncoordinated regional screening programs. |
 
@@ -56,7 +58,7 @@ This document formally specifies:
 
 ## 4. Macro End-to-End System Flow
 
-The macro flow tracks how routine data moves through automated mathematical risk calculation to dual clinician and patient activation:
+The macro flow tracks how physical paper lab slips and electronic records move through automated optical ingestion, trajectory calculation, and dual closed-loop clinician-patient action:
 
 ```mermaid
 flowchart TD
@@ -67,12 +69,20 @@ flowchart TD
     classDef actionNode fill:#f1f5f9,stroke:#475569,stroke-width:2px;
     classDef endNode fill:#f8fafc,stroke:#64748b,stroke-width:2px;
 
-    Start([Routine Primary Care Lab & Vitals Ingested]):::startNode --> Ingestion[["FHIR / CSV Ingestion Pipeline"]]
-    Ingestion --> Engine[["Algorithmic Trajectory Engine: CKD-EPI 2021, OLS eGFR Slope, KFRE 4-Var"]]:::engineNode
+    StartPaper([Physical Paper Lab Report / PDF Ingested]):::startNode --> IngestOCR[["Multi-Modal Vision-AI & Layout OCR Engine"]]:::engineNode
+    StartDigital([Direct Electronic LIS / EHR Feed]):::startNode --> FHIRNorm[["HL7 FHIR R4 Normalization Pipeline"]]:::engineNode
     
-    Engine --> CheckRisk{"Risk Criteria Met?<br/>(eGFR Slope < -3 mL/min/yr OR KFRE 5-yr > 5%)"}:::decisionNode
+    IngestOCR --> ConfCheck{"OCR Confidence >= 90%?"}:::decisionNode
+    ConfCheck -- "Yes" --> FHIRNorm
+    ConfCheck -- "No (<90% or Glare)" --> HITLReview["Human-in-the-Loop Nurse Verification Queue<br/>(Visual Bounding-Box Overlay in <5s)"]:::actionNode
+    HITLReview --> FHIRNorm
+
+    FHIRNorm --> HistSync[["Query Historical HIE API (Malaffi / SatuSehat)"]]:::engineNode
+    HistSync --> Engine[["Algorithmic Trajectory Engine:<br/>CKD-EPI 2021, OLS eGFR Slope, KFRE 4-Variable"]]:::engineNode
     
-    CheckRisk -- "No (Low Risk / Stable)" --> RoutineMon["Schedule Routine Annual Rescreening"]:::actionNode
+    Engine --> CheckRisk{"Actionable Risk Criteria Met?<br/>(eGFR Slope < -3 mL/min/yr OR KFRE 5-yr > 5%)"}:::decisionNode
+    
+    CheckRisk -- "No (Low Risk / Stable)" --> RoutineMon["Schedule Routine Annual Rescreening Registry"]:::actionNode
     RoutineMon --> EndStable([Follow-up Maintained]):::endNode
     
     CheckRisk -- "Yes (Rapid Progressor / High Risk)" --> ParallelSplit{Parallel Closed-Loop Activation}:::decisionNode
@@ -81,7 +91,7 @@ flowchart TD
     ParallelSplit --> PatientTrigger["Trigger Empathetic WhatsApp Agent Dialogue"]:::actionNode
     
     subgraph DoctorLane ["Clinician Subsystem (Clinical Copilot)"]
-        ClinicianTrigger --> DocReview["Physician Reviews Trajectory & Risk Stratification"]
+        ClinicianTrigger --> DocReview["Physician Reviews Trajectory & Source Document Overlay"]
         DocReview --> OrderSet("1-Click GDMT Order Set: SGLT2i + ARB + 4-Wk Safety Labs")
     end
     
@@ -107,12 +117,75 @@ flowchart TD
 
 ---
 
-## 5. User Flow 1: Frontline Physician (Clinical Copilot)
+## 5. User Flow 0: Physical-to-Digital Vision Ingestion (Snap-to-Care Gateway)
 
 ### 5.1 Context & Goal
-Primary care clinicians routinely face 40–60 patients per shift with 3–5 minutes per consultation. They lack longitudinal slope calculators and frequently hesitate to initiate SGLT2 inhibitors or ACEi/ARBs due to benign hemodynamic serum creatinine increases. 
+Over 85% of at-risk patients receive laboratory results on printed paper slips from private standalone laboratories (e.g., Prodia, Kimia Farma, PureHealth, SEHA) or visa medical screenings. Because these results are not electronically connected to primary care EHRs, they sit unindexed in drawers or physical folders. The **Snap-to-Care Gateway** provides a zero-hardware, smartphone-native bridge that converts raw paper printouts into interoperable HL7 FHIR records in $<2\text{ seconds}$.
 
 ### 5.2 Flow Diagram
+
+```mermaid
+flowchart TD
+    %% Styling
+    classDef startNode fill:#e0f2fe,stroke:#0284c7,stroke-width:2px;
+    classDef engineNode fill:#f0fdf4,stroke:#16a34a,stroke-width:2px;
+    classDef decisionNode fill:#fef3c7,stroke:#d97706,stroke-width:2px;
+    classDef actionNode fill:#f1f5f9,stroke:#475569,stroke-width:2px;
+    classDef endNode fill:#f8fafc,stroke:#64748b,stroke-width:2px;
+
+    CaptureStart([User Initiates Document Capture]):::startNode --> InputChannel{"Capture Channel"}:::decisionNode
+    
+    InputChannel -- "Patient at Home" --> WACam["WhatsApp Mobile Snapshot / Photo Upload"]:::actionNode
+    InputChannel -- "Nurse at Clinic" --> ClinicScan["Clinic Web UI Scanner / Tablet Camera"]:::actionNode
+    InputChannel -- "EHR Admin" --> BatchPDF["Batch Scanned PDF Ingestion"]:::actionNode
+    
+    WACam --> PreProcess[["System Process: OpenCV Preprocessing<br/>(Dewarping, Shadow Removal, Contrast Normalization)"]]:::engineNode
+    ClinicScan --> PreProcess
+    BatchPDF --> PreProcess
+    
+    PreProcess --> QualityCheck{"Image Quality Check Pass?<br/>(Resolution >= 300 DPI, Sharpness > 100)"}:::decisionNode
+    
+    QualityCheck -- "No (Blurry / Dark)" --> ReCapturePrompt["Display Real-Time Guide: 'Please hold still in good light'"]:::actionNode
+    ReCapturePrompt --> InputChannel
+    
+    QualityCheck -- "Yes" --> LayoutAI[["System Process: Multimodal Layout-Aware Vision OCR<br/>(Zero-Template Table & Key-Value Extraction)"]]:::engineNode
+    
+    LayoutAI --> ClinicalNER[["System Process: Clinical Entity Normalizer<br/>(LOINC: Creatinine 2160-0, eGFR 33914-3, Protein 2888-6)"]]:::engineNode
+    
+    ClinicalNER --> ConfidenceGate{"Extraction Confidence >= 90% across All Key Analytes?"}:::decisionNode
+    
+    ConfidenceGate -- "No (< 90% Confidence)" --> HITLQueue["Divert to Human-in-the-Loop Triage Queue<br/>(Nurse Tablet Alert with Bounding-Box Overlay)"]:::actionNode
+    HITLQueue --> NurseAction{"Nurse Verification Action"}:::decisionNode
+    NurseAction -- "Adjust / Confirm Value" --> ManualEdit["Nurse Corrects Value in <5 Seconds"]:::actionNode
+    ManualEdit --> BuildFHIR[["System Process: Construct HL7 FHIR DiagnosticReport Bundle"]]:::engineNode
+    NurseAction -- "Reject Unreadable" --> DiscardAlert["Trigger Rescan Request to Patient"]:::actionNode
+    DiscardAlert --> ReCapturePrompt
+    
+    ConfidenceGate -- "Yes (High Confidence)" --> BuildFHIR
+    
+    BuildFHIR --> HIEQuery[["System Process: Query Historical Labs via API<br/>(Abu Dhabi Malaffi HIE / Indonesia SatuSehat)"]]:::engineNode
+    
+    HIEQuery --> TrajectoryReady([Longitudinal Dataset Assembled: Trigger Trajectory Engine]):::endNode
+```
+
+### 5.3 Detailed Step Anatomy & Failure Safeguards
+
+| Step / Action | Description & Technical Operation | Decision / Edge Case | Fail-Safe & Quality Guard |
+| :--- | :--- | :--- | :--- |
+| **1. Optical Capture** | User takes photo via WhatsApp or uploads PDF via clinic web portal. | Orientation angle, glare, folded paper. | OpenCV automatic quadrilateral perspective dewarping. |
+| **2. Quality Gate** | Fast Laplacian variance filter evaluates blur; contrast histogram checked. | If blurry ($\text{variance} < 100$), image rejected immediately. | Prevents sending illegible garbage into AI pipeline; prompts user to retake. |
+| **3. Layout-AI Parsing** | Zero-template transformer (LayoutLMv3 / Donut) extracts tabular values. | Divergent lab report formats (Prodia, Kimia Farma, PureHealth, SEHA). | Extracts absolute numbers, reference ranges, and measurement units ($\text{mg/dL}$ vs $\mu\text{mol/L}$). |
+| **4. Confidence Gate** | Probability distribution calculated per extracted clinical bounding box. | If confidence $<90\%$ on Creatinine or eGFR. | **Strict HITL Gate:** Never passes unconfident medical data into clinical decision support without human verification. |
+| **5. FHIR Harmonization** | Values structured as HL7 FHIR `Observation` linked to `DiagnosticReport`. | Missing historical baseline records. | Queries HIE API (Malaffi / SatuSehat) to reconstruct serial creatinine points. |
+
+---
+
+## 6. User Flow 1: Frontline Physician (Clinical Copilot)
+
+### 6.1 Context & Goal
+Primary care clinicians routinely face 40–60 patients per shift with 3–5 minutes per consultation. They lack longitudinal slope calculators and frequently hesitate to initiate SGLT2 inhibitors or ACEi/ARBs due to benign hemodynamic serum creatinine increases. 
+
+### 6.2 Flow Diagram
 
 ```mermaid
 flowchart TD
@@ -139,7 +212,7 @@ flowchart TD
     ScreenOrderConfirm --> DocFinish2([Consultation Concluded with Active GDMT])
 ```
 
-### 5.3 Detailed Step Anatomy
+### 6.3 Detailed Step Anatomy
 
 | Step / Screen | Description & Content | Key Decision / Action | Fail-Safe / Annotation |
 | :--- | :--- | :--- | :--- |
@@ -150,12 +223,12 @@ flowchart TD
 
 ---
 
-## 6. User Flow 2: Asymptomatic Patient (WhatsApp Engagement Agent)
+## 7. User Flow 2: Asymptomatic Patient (WhatsApp Engagement Agent)
 
-### 6.1 Context & Goal
+### 7.1 Context & Goal
 Early chronic kidney disease causes zero physical discomfort. Standard medical alerts stating *"Your creatinine is 1.4 mg/dL"* fail because patients feel completely healthy and assume the test is erroneous or unnecessary. The WhatsApp agent translates filtration loss into culturally grounded metaphors and converts intent into a confirmed appointment.
 
-### 6.2 Flow Diagram
+### 7.2 Flow Diagram
 
 ```mermaid
 flowchart TD
@@ -187,17 +260,19 @@ flowchart TD
     RebookCheck -- "No" --> EscalationTrigger([Escalate to Community Health Worker]):::engineNode
 ```
 
-### 6.3 Conversational Design Specifications
+### 7.3 Conversational Design Specifications
 * **Language Support:** Bahasa Indonesia and English.
 * **Tone:** Empathetic, reassuring, non-alarmist, actionable.
 * **Metaphor Used:** *"Saringan Dapur"* (Kitchen Water Filter)—explaining that just like a household water filter that gets clogged gradually without making a sound, kidneys filter blood silently until fully stopped.
 
 ---
 
-## 7. User Flow 3: Community Escalation Loop (Kader / CHW)
+## 8. User Flow 3: Community Escalation Loop (Kader / CHW)
 
-### 7.1 Context & Goal
+### 8.1 Context & Goal
 For underserved or elderly populations, digital notifications alone may not bridge care delivery. When a high-risk patient misses appointments or fails to pick up chronic medication refills for over 30 days, the platform escalates the case to local Community Health Workers (*Kader Kesehatan* / Posbindu).
+
+### 8.2 Flow Diagram
 
 ```mermaid
 flowchart TD
@@ -220,9 +295,9 @@ flowchart TD
 
 ---
 
-## 8. System Scope & Boundaries
+## 9. System Scope & Boundaries
 
-### 8.1 Functional Scope Matrix
+### 9.1 Functional Scope Matrix
 
 | System Domain | In-Scope (Implemented & Supported) | Out-of-Scope (Deferred / Excluded) |
 | :--- | :--- | :--- |
@@ -232,14 +307,14 @@ flowchart TD
 | **Patient Engagement (WhatsApp)** | Asynchronous AI messaging, kitchen-filter analogy, myth busting on kidney medication, interactive clinic booking. | Real-time live emergency triage (e.g., acute chest pain, pulmonary edema), unverified herbal medicine prescribing. |
 | **Population Health Command Center** | Macro heatmaps by health district, high-risk registry, Markov state-transition model of projected dialysis costs avoided. | Pharmaceutical supply chain procurement and direct warehouse inventory management. |
 
-### 8.2 Technical Requirements & Non-Functional Specifications
+### 9.2 Technical Requirements & Non-Functional Specifications
 * **Accessibility & Latency:** Doctor Copilot screens render within $<400\text{ ms}$ (Doherty Threshold) to prevent friction during clinical visits.
 * **Security & Privacy:** Compliant with healthcare data regulations (FHIR profile compatibility, anonymized patient identifiers in messaging queues).
 * **Interoperability:** Standardized REST APIs accepting JSON/FHIR formats, adaptable to both Indonesia's SATUSEHAT / BPJS PCare and Abu Dhabi's Malaffi HIE.
 
 ---
 
-## 9. Related Resources & Verification
+## 10. Related Resources & Verification
 
 * **Clinical Formulas:** See [docs/CLINICAL_FORMULAS.md](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/CLINICAL_FORMULAS.md) for complete mathematical proofs, benchmark test fixtures, and KDIGO matrices.
 * **Track Analysis & Competition Strategy:** See [docs/INITIAL_CONTEXT.md](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/INITIAL_CONTEXT.md).

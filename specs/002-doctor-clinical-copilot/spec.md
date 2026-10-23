@@ -40,14 +40,25 @@ Explain the physiological rationale behind an initial 10-20% eGFR drop following
 **Acceptance Scenarios**:
 1. **Given** physician opens dip modal, **Then** display KDIGO 2024 explanation on intraglomerular pressure decompression.
 
+---
+
+### User Story 5 - Source Visual Citation Lightbox (Priority: P1)
+Provide 1-click visual inspection of original paper lab slip or PDF with highlighted green bounding box overlay.
+
+**Acceptance Scenarios**:
+1. **Given** patient with OCR-derived lab values, **When** physician clicks citation badge next to analyte, **Then** open lightbox displaying scanned document with bounding box `[ymin, xmin, ymax, xmax]`.
+2. **Given** lightbox open, **Then** display extraction confidence score, raw OCR string, normalized LOINC code, and nurse verification status.
+
 ## Requirements *(mandatory)*
 - **FR-001**: FSD architecture strictly enforced (`pages -> widgets -> features -> entities -> shared`).
 - **FR-002**: Zero blocking modal alerts for routine clinical care.
 - **FR-003**: Dual-encoding for all risk badges (color + icon + text).
 - **FR-004**: Formatting: eGFR to 1 decimal place, slope with explicit sign, currency localized.
 - **FR-005**: Response time from click to prescription authorization $< 300\text{ ms}$.
+- **FR-006**: Source visual lightbox render time $< 200\text{ ms}$ with pixel-accurate SVG/Canvas bounding-box highlighting.
 
 ## Success Criteria *(mandatory)*
 - **SC-001**: Physician can authorize complete GDMT in $< 3$ clicks and $< 30$ seconds.
 - **SC-002**: 100% of order sets enforce reflex safety labs.
 - **SC-003**: Zero FSD cross-slice import violations (`npm run lint` passes cleanly).
+- **SC-004**: 100% of OCR-ingested biomarkers link to verifiable source document coordinates.

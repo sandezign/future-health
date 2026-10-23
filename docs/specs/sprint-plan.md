@@ -29,8 +29,10 @@ $$\text{North Star Metric} = \textbf{Confirmed Upstream GDMT Interceptions Rate}
 
 ```mermaid
 flowchart LR
-    subgraph DataLayer ["Data & Ingestion"]
-        DataJSON["Synthetic Patients (BPJS & DoH Cohorts)"] --> IngestAPI["FastAPI Ingestion Endpoint"]
+    subgraph DataLayer ["Data & Ingestion Gateway"]
+        PaperSlip["Physical Paper Lab Slip / PDF<br/>(Prodia, PureHealth, SEHA)"] --> OCRGateway["Snap-to-Care Vision Gateway<br/>• OpenCV Quality Gate (Blur >= 100)<br/>• Layout AI & Table Extraction<br/>• LOINC Normalizer & FHIR Builder"]
+        DataJSON["Electronic LIS / HIE Records<br/>(BPJS & Malaffi Cohorts)"] --> IngestAPI["FastAPI Ingestion Endpoint"]
+        OCRGateway --> IngestAPI
     end
 
     subgraph BackendCore ["Backend Engine (Python 3.11+)"]
@@ -41,8 +43,8 @@ flowchart LR
 
     subgraph FrontendApp ["Frontend Application (React 19 / FSD)"]
         BackendCore --> APIClient["API Services (React Query)"]
-        APIClient --> DocCopilot["Doctor Clinical Copilot<br/>• eGFR Slope Visualizer<br/>• 1-Click GDMT Card<br/>• Dip Reassurance Modal"]
-        APIClient --> WASimulator["In-Browser WhatsApp Simulator<br/>• Kitchen Filter Metaphor<br/>• Multi-turn Patient Booking"]
+        APIClient --> DocCopilot["Doctor Clinical Copilot<br/>• eGFR Slope Visualizer<br/>• 1-Click GDMT Card<br/>• Source Visual Citation Lightbox<br/>• Dip Reassurance Modal"]
+        APIClient --> WASimulator["In-Browser WhatsApp Simulator<br/>• Lab Photo Upload Entry Point<br/>• Kitchen Filter Metaphor<br/>• Multi-turn Patient Booking"]
         APIClient --> CommandCenter["Command Center<br/>• Regional Risk Heatmap<br/>• Markov Economic ROI"]
     end
 ```
@@ -84,6 +86,28 @@ flowchart LR
 
 ---
 
+### Phase 1b: Multi-Modal Vision & OCR Ingestion Engine (Snap-to-Care Gateway)
+> **Specification:** [`docs/specs/005-vision-ocr-ingestion.md`](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/specs/005-vision-ocr-ingestion.md)  
+> **Status:** `Ready for Implementation`  
+* **Goal:** Bridge the physical-to-digital gap by turning smartphone photos of paper lab slips into validated HL7 FHIR `DiagnosticReport` bundles with source bounding boxes in $<2\text{ seconds}$.
+* **Tasks:**
+  1. **Image Preprocessing & Blur Detection (`backend/app/services/ocr/preprocessor.py`):**
+     * Implement Laplacian variance blur filter (rejecting $\text{variance} < 100$).
+     * Automated perspective deskewing and contrast normalization.
+  2. **Layout Parsing & Entity Linking (`backend/app/services/ocr/layout_parser.py` & `normalizer.py`):**
+     * Zero-template tabular extraction for Serum Creatinine (`LOINC 2160-0`), eGFR (`LOINC 33914-3`), Dipstick Protein (`LOINC 2888-6`), and BP.
+     * Automatic unit conversion ($\mu\text{mol/L} \rightarrow \text{mg/dL}$).
+     * Extraction coordinate bounding-box serialization (`[ymin, xmin, ymax, xmax]`).
+  3. **FHIR R4 Bundle Builder (`backend/app/services/ocr/fhir_builder.py`):**
+     * Construct standard HL7 FHIR `DiagnosticReport` and `Observation` resources with source bounding-box extensions.
+  4. **FastAPI Endpoints (`backend/app/api/endpoints/ocr.py`):**
+     * `POST /api/v1/ocr/ingest-lab-slip`: Multi-part image/PDF upload returning parsed analytes and FHIR bundle.
+     * `GET /api/v1/ocr/hitl-queue`: Queue for low-confidence ($<90\%$) extractions.
+     * `POST /api/v1/ocr/verify`: Nurse verification endpoint for human-in-the-loop sign-off.
+* **Success Gate:** Unit tests in `backend/tests/test_ocr_ingestion.py` pass with $\ge 95\%$ field extraction accuracy and blur rejection verification.
+
+---
+
 ### Phase 2: Doctor Clinical Copilot Integration (Frontend / React 19)
 > **Specification:** [`docs/specs/002-doctor-clinical-copilot.md`](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/specs/002-doctor-clinical-copilot.md)  
 > **Spec Kit:** [`specs/002-doctor-clinical-copilot/spec.md`](file:///Users/mb-rci-backup/Documents/antigravity/future-health/specs/002-doctor-clinical-copilot/spec.md)  
@@ -100,7 +124,9 @@ flowchart LR
      * Automated reflex order for 4-week Potassium and Creatinine safety monitoring.
   4. **Hemodynamic Dip Reassurance Modal:**
      * Interactive pop-up explaining that an initial $\le 30\%$ drop in eGFR represents benign intraglomerular pressure decompression.
-* **Success Gate:** Physician can view patient risk, review trajectory, and authorize GDMT in $<3\text{ clicks}$ ($<30\text{ seconds}$).
+  5. **Source Visual Citation Lightbox (`widgets/source-citation-lightbox`):**
+     * Clicking any OCR-ingested biomarker opens an in-app visual modal displaying the original scanned document with an interactive green bounding-box overlay.
+* **Success Gate:** Physician can view patient risk, inspect source document citations, and authorize GDMT in $<3\text{ clicks}$ ($<30\text{ seconds}$).
 
 ---
 
@@ -111,6 +137,7 @@ flowchart LR
 * **Tasks:**
   1. **WhatsApp Simulator Widget (`widgets/whatsapp-simulator`):**
      * Realistic WhatsApp mobile screen UI (chat bubbles, delivery ticks, quick-reply buttons).
+     * **Photo Upload Entry Point:** Allow patient or demonstrator to send a photo of a lab slip directly in the chat to trigger the Snap-to-Care ingestion loop.
   2. **Behavioral Dialogue Script:**
      * Multilingual support: Bahasa Indonesia (*"Filter Air Dapur"*) & English (*"Kitchen Filter"*).
      * Interactive branching logic:

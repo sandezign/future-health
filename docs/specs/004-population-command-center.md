@@ -67,6 +67,23 @@ So that I can independently verify the financial return on investment for my spe
 
 ---
 
+### User Story 4 - Screening-to-Care Conversion Funnel Analytics (Priority: P2)
+As a population health program manager,  
+I want to monitor the end-to-end pipeline metrics from initial paper slip capture through to confirmed GDMT initiation,  
+So that I can detect operational drop-offs and quantify how effectively the "Screening-to-Care Loop" is being closed across pilot facilities.
+
+- **Acceptance Scenarios:**
+  1. Funnel visualization tracking the 6 pipeline stages:
+     - `Stage 1: Documents Ingested` (Breakdown: Electronic feeds vs. Snap-to-Care paper scans).
+     - `Stage 2: FHIR Normalization` (Auto-promoted $\ge 90\%$ vs. HITL nurse triaged).
+     - `Stage 3: Trajectory Evaluation` (Stable vs. Rapid Progressors identified).
+     - `Stage 4: WhatsApp Outreach` (Delivered, Read, Conversational Engagement Rate).
+     - `Stage 5: Clinic Attendance` (Confirmed Appointments vs. Kader Home Visits).
+     - `Stage 6: GDMT Interception` (1-Click Order Sets authorized with safety reflex labs).
+  2. Aggregated operational KPIs: Ingestion throughput, mean time to clinic booking, and dialysis prevention yield.
+
+---
+
 ## 3. Mathematical Specification: Markov Transition Matrix
 
 ```mermaid

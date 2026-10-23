@@ -15,14 +15,28 @@ The **In-Browser WhatsApp Patient Engagement Simulator** bridges the communicati
 Patients in early CKD (Stages 1–3) have zero physical symptoms; notifying them with clinical jargon like *"Your eGFR is 48 with microalbuminuria"* leads to denial, fear, or dismissal. 
 
 This simulator demonstrates how RENAL-PULSE overcomes denial using:
-1. **Photorealistic In-Browser WhatsApp Client:** A zero-dependency mobile phone mockup inside the web app with authentic message bubbles, status ticks, timestamps, and quick-reply buttons.
-2. **Culturally Grounded Behavioral Scripting:** The intuitive **"Kitchen Filter" / "Filter Air Dapur"** metaphor to explain filtration decline without terrifying the patient.
-3. **Interactive Multi-Turn Dialogue Tree:** Addressing real patient objections (denial of symptoms, fear of "harsh chemicals" destroying kidneys, scheduling conflicts).
-4. **Community Health Worker (*Kader*) Escalation:** Immediate task dispatch when a patient lapses or misses their appointment.
+1. **Snap-to-Care Lab Photo Upload Entry Point:** Direct camera/attachment icon in the chat mockup allowing the patient (or judge) to upload a printed lab slip photo to immediately trigger OCR ingestion and trajectory calculation.
+2. **Photorealistic In-Browser WhatsApp Client:** A zero-dependency mobile phone mockup inside the web app with authentic message bubbles, status ticks, timestamps, and quick-reply buttons.
+3. **Culturally Grounded Behavioral Scripting:** The intuitive **"Kitchen Filter" / "Filter Air Dapur"** metaphor to explain filtration decline without terrifying the patient.
+4. **Interactive Multi-Turn Dialogue Tree:** Addressing real patient objections (denial of symptoms, fear of "harsh chemicals" destroying kidneys, scheduling conflicts).
+5. **Community Health Worker (*Kader*) Escalation:** Immediate task dispatch when a patient lapses or misses their appointment.
 
 ---
 
 ## 2. User Scenarios & Prioritized User Stories
+
+### User Story 0 - Lab Photo Upload & Snap-to-Care Activation (Priority: P1)
+As a patient holding a paper lab slip from an external diagnostic center (e.g., Prodia, PureHealth, SEHA) or an evaluator running a live demo,  
+I want to tap the camera/attachment icon in the WhatsApp interface to upload a photo of my lab results,  
+So that the automated Snap-to-Care Vision Gateway ingests the document, extracts key biomarkers in $<2\text{ seconds}$, and initiates a personalized care loop right in the chat.
+
+- **Acceptance Scenarios:**
+  1. **Given** the simulator view, **When** clicking the paperclip/camera icon, **Then** open a file picker with pre-populated demo lab slip presets (e.g. "Prodia High-Risk Progressor", "SEHA Borderline CKD", "Blurry Unreadable Slip").
+  2. **Given** a valid lab slip photo selected, **Then** show an uploaded image bubble in the chat with a "Scanning document with Snap-to-Care AI..." system status pill.
+  3. **Given** successful extraction ($\text{blur variance} \ge 100$, confidence $\ge 90\%$), **Then** bot automatically responds with personalized greeting, extracted eGFR summary, and the "Kitchen Filter" opening question.
+  4. **Given** a blurry image selected ($\text{blur variance} < 100$), **Then** bot immediately replies: *"Foto tampak buram. Mohon ambil ulang foto dengan pencahayaan cukup agar hasil akurat."* (*"Photo appears blurry. Please retake under good lighting."*)
+
+---
 
 ### User Story 1 - Photorealistic WhatsApp Mobile Interface (Priority: P1)
 As a hackathon judge or evaluator,  
@@ -73,7 +87,16 @@ So that vulnerable patients do not fall through the cracks.
 
 ```mermaid
 flowchart TD
-    Start["WhatsApp Notification Sent<br/>'Halo Ibu Siti, hasil lab rutin sudah selesai'"] --> Choice1{"Patient Response"}
+    subgraph InboundPhoto ["Dual Initiation Channels"]
+        PhotoUpload["Patient / Judge Uploads Lab Photo<br/>(Camera / Attachment Icon)"] --> OCRCheck{"Snap-to-Care Quality Gate<br/>Laplacian Blur >= 100?"}
+        OCRCheck -->|"Blurry (< 100)"| RetakeMsg["Bot: 'Foto tampak buram.<br/>Mohon ambil ulang dengan pencahayaan cukup.'"]
+        RetakeMsg --> PhotoUpload
+        OCRCheck -->|"Clear (>= 100)"| OCRExtract["Bot: 'Hasil lab terbaca: eGFR 42 (Tahap 3).<br/>Mari kita bahas langkah pencegahannya.'"]
+        ProactiveStart["Proactive System Outreach<br/>'Halo Ibu Siti, hasil lab rutin sudah selesai'"]
+    end
+
+    OCRExtract --> Choice1{"Patient Response / Question"}
+    ProactiveStart --> Choice1
     
     Choice1 -->|"1. Saya merasa sehat<br/>(Denial)"| SilentEd["Silent Progression Metaphor<br/>'Filter dapur menyaring kotoran tanpa suara'"]
     Choice1 -->|"2. Takut obat kimia keras<br/>(Fear)"| ShieldEd["Organ Shield Framing<br/>'Obat ini seperti pelindung pereda tekanan'"]
@@ -93,4 +116,5 @@ flowchart TD
 
 - **SC-001 (Zero External Dependency):** 100% in-browser client-side simulation requiring zero external network APIs or SMS credentials.
 - **SC-002 (Bilingual Parity):** All dialogue branches fully translated and culturally verified in both Bahasa Indonesia and English.
-- **SC-003 (Loop Completion):** Judge can complete full conversational journey from outreach to confirmed booking in $< 90\text{ seconds}$.
+- **SC-003 (Loop Completion):** Judge can complete full conversational journey from lab slip photo upload to confirmed booking in $< 90\text{ seconds}$.
+- **SC-004 (Visual Feedback):** Image uploads trigger simulated processing states, blur re-prompting, and instant biomarker feedback within 1.5 seconds.

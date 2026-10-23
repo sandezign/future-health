@@ -137,6 +137,7 @@ $$\text{Risk}(t) = 1 - S_0(t)^{\exp(\text{LP})}$$
 - **FR-008**: System MUST evaluate contraindications: block SGLT2i initiation if $\text{eGFR} < 20$ and block ACEi/ARB if potassium $> 5.5\text{ mEq/L}$.
 - **FR-009**: System MUST attach the hemodynamic dip reassurance disclosure to every GDMT recommendation.
 - **FR-010**: System MUST expose REST API endpoints with OpenAPI documentation at `/docs`.
+- **FR-011**: System MUST accept patient observations originating from either direct electronic EHR feeds or optical lab reports ingested via the Snap-to-Care Gateway (`docs/specs/005-vision-ocr-ingestion.md`), preserving source bounding-box citations for clinical traceability.
 
 ### Key Entities
 ```python
@@ -147,6 +148,10 @@ class PatientObservation(BaseModel):
     uacr: Optional[float] = None  # mg/g
     systolic_bp: Optional[int] = None  # mmHg
     diastolic_bp: Optional[int] = None  # mmHg
+    source: Optional[str] = "ELECTRONIC_FEED"  # "ELECTRONIC_FEED" | "SNAP_TO_CARE_OCR"
+    bounding_box: Optional[list[float]] = None  # [ymin, xmin, ymax, xmax] normalized coordinates
+    document_id: Optional[str] = None  # Ingested optical document reference
+    confidence: Optional[float] = None  # OCR confidence score (0.00 - 1.00)
 
 class TrajectoryAnalysis(BaseModel):
     current_egfr: float

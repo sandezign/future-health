@@ -32,6 +32,15 @@ Enable interactive adjustment of cohort size and show real-time cost savings in 
 1. **Given** Indonesia mode, **When** cohort slider is moved, **Then** update 5-year net savings in IDR (Trillions).
 2. **Given** Abu Dhabi mode, **When** cohort slider is moved, **Then** update 5-year net savings in USD (Millions).
 
+---
+
+### User Story 4 - Screening-to-Care Conversion Funnel (Priority: P2)
+Track the end-to-end pipeline metrics from paper slip scan to GDMT interception.
+
+**Acceptance Scenarios**:
+1. **Given** population dashboard, **Then** render 6-stage funnel from document ingestion (paper vs electronic) to authorized GDMT order sets.
+2. **Given** regional view, **Then** display loop closure percentage and dialysis prevention yield.
+
 ## Requirements *(mandatory)*
 - **FR-001**: 5-state Markov decision model implemented with pure mathematical transition functions.
 - **FR-002**: Real-time client-side calculation latency $< 50\text{ ms}$ upon slider movement.

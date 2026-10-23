@@ -66,6 +66,19 @@ So that I am reassured not to inappropriately discontinue therapy when lab value
 
 ---
 
+### User Story 5 - Source Visual Citation Lightbox (Priority: P1)
+As a primary care doctor reviewing lab results ingested from an external paper slip or uploaded PDF,  
+I want to click directly on an OCR-derived biomarker badge (e.g., Creatinine: 1.4 mg/dL or eGFR: 42) to inspect the original source document with a highlighted bounding box,  
+So that I have 100% confidence in the extracted values with zero fear of AI hallucinations or transcription errors before authorizing GDMT.
+
+- **Acceptance Scenarios:**
+  1. **Given** a patient whose clinical data originates from an optical lab report (`source: "SNAP_TO_CARE_OCR"`), **When** viewing the patient summary, **Then** display an optical document citation badge next to the biomarker.
+  2. **Given** the physician clicks the citation badge, **When** the lightbox opens, **Then** render the original scanned document/PDF with a glowing green bounding box (`[ymin, xmin, ymax, xmax]`) centered on the extracted analyte.
+  3. **Given** the bounding box view, **Then** display an extraction metadata tooltip showing: original raw text string, normalized LOINC code, confidence score ($\ge 90\%$), and timestamp.
+  4. **Given** an image that underwent Human-in-the-Loop triage, **Then** display a "Nurse Verified" badge with the triaging nurse's ID.
+
+---
+
 ## 3. Architecture & FSD Component Hierarchy
 
 Strict adherence to Feature-Sliced Design (FSD v2):
@@ -77,7 +90,8 @@ frontend/src/
 │   ├── egfr-trajectory-chart/   # Recharts trajectory & slope visualizer
 │   ├── gdmt-prescription-card/  # 1-click order set with safety reflex orders
 │   ├── patient-risk-summary/    # KDIGO grid tile & vital signs
-│   └── hemodynamic-dip-modal/   # Clinical reassurance interactive modal
+│   ├── hemodynamic-dip-modal/   # Clinical reassurance interactive modal
+│   └── source-citation-lightbox/# Interactive bounding-box viewer for scanned slips
 ├── features/
 │   ├── initiate-gdmt/           # Order submission mutation & state
 │   ├── toggle-system-context/   # BPJS vs. DoH global switch
@@ -86,7 +100,7 @@ frontend/src/
 │   ├── patient/                 # Patient model, types, and hooks
 │   └── cardiorenal-risk/        # KFRE and slope data models
 └── shared/
-    ├── ui/                      # Button, Badge, Modal, Tooltip, Card
+    ├── ui/                      # Button, Badge, Modal, Tooltip, Card, Lightbox
     ├── api/                     # Axios/Fetch client with React Query
     └── lib/formatters/          # Medical formatting (eGFR, slope, currency)
 ```
@@ -98,3 +112,4 @@ frontend/src/
 - **SC-001 (Speed to Action):** Physician can assess risk and authorize complete GDMT in $< 3\text{ clicks}$ ($< 30\text{ seconds}$).
 - **SC-002 (Zero Uncoupled Prescribing):** 100% of generated GDMT order sets include the reflex 4-week potassium and creatinine safety check.
 - **SC-003 (Accessibility & Responsiveness):** Compliant with WCAG 2.2 AA (4.5:1 text contrast, 44px touch targets).
+- **SC-004 (Source Verification Auditability):** Any paper-ingested analyte provides instantaneous ($< 200\text{ ms}$) source document lightbox inspection with pixel-accurate bounding box highlighting.

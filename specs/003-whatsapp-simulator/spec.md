@@ -7,6 +7,16 @@
 
 ## User Scenarios & Testing *(mandatory)*
 
+### User Story 0 - Lab Photo Upload & Snap-to-Care Activation (Priority: P1)
+Enable patient or judge to upload a lab slip image directly in the chat interface to trigger OCR ingestion and dialogue initiation.
+
+**Acceptance Scenarios**:
+1. **Given** paperclip/camera icon clicked, **When** user selects demo lab slip image, **Then** show uploaded photo bubble with "Scanning with Snap-to-Care AI..." status.
+2. **Given** valid slip ($\text{blur} \ge 100$), **Then** bot parses eGFR/Creatinine and initiates personalized "Kitchen Filter" dialogue.
+3. **Given** blurry slip ($\text{blur} < 100$), **Then** bot requests retake with clear lighting.
+
+---
+
 ### User Story 1 - Photorealistic WhatsApp Client (Priority: P1)
 Provide a mobile device frame simulating WhatsApp chat with real-time bubble animations and quick replies.
 

@@ -3,10 +3,11 @@
 RENAL-PULSE is a cardiorenal population health engine built for the **Future Health Digital Innovation Challenge** (Abu Dhabi Global Initiative / Hack2skill). It bridges the "Signal-to-Action Translation Chasm" by converting routine, latent primary care lab data (serum creatinine, blood pressure, dipstick protein) into upstream prevention before patients develop irreversible End-Stage Kidney Disease (ESKD) requiring lifelong dialysis.
 
 The solution provides:
-1. An **Algorithmic Trajectory Engine** that computes CKD-EPI 2021 eGFR slopes and the Tangri 4-variable Kidney Failure Risk Equation (KFRE).
-2. A **Doctor Clinical Copilot** (React 19, Feature-Sliced Design) delivering 1-click Guideline-Directed Medical Therapy (GDMT: SGLT2i + ARB) order sets.
-3. A **Behavioral WhatsApp Engagement Agent** that overcomes asymptomatic patient denial and secures clinic attendance.
-4. A **Population Health Command Center** visualizing regional cardiorenal heat maps and projected national insurance (BPJS / DoH) cost savings.
+1. A **Snap-to-Care Vision Ingestion Gateway** converting printed paper lab slips and PDFs into HL7 FHIR R4 resources with source visual citations in $<2\text{s}$.
+2. An **Algorithmic Trajectory Engine** that computes CKD-EPI 2021 eGFR slopes and the Tangri 4-variable Kidney Failure Risk Equation (KFRE).
+3. A **Doctor Clinical Copilot** (React 19, Feature-Sliced Design) delivering 1-click Guideline-Directed Medical Therapy (GDMT: SGLT2i + ARB) order sets.
+4. A **Behavioral WhatsApp Engagement Agent** that overcomes asymptomatic patient denial and secures clinic attendance.
+5. A **Population Health Command Center** visualizing regional cardiorenal heat maps and projected national insurance (BPJS / DoH) cost savings.
 
 This file provides shared context for coding agents working in this repository. Rules live in `.agents/rules/`.
 
@@ -17,11 +18,13 @@ This file provides shared context for coding agents working in this repository. 
 | Need | Read |
 |---|---|
 | Strategic Blueprint & Research Synthesis | `docs/STRATEGIC_RESEARCH_BLUEPRINT.md` |
+| Research & Ideation Synthesis (All Solutions) | `docs/research/RESEARCH_AND_IDEATION_SYNTHESIS.md` |
 | Project Context & Competition Track | `docs/INITIAL_CONTEXT.md` |
 | Track Alignment: Closing the Screening-to-Care Loop | `docs/CLOSING_THE_SCREENING_TO_CARE_LOOP.md` |
 | Problem Space & User Discovery Research | `docs/research/PROBLEM_SPACE_DISCOVERY.md` |
 | Product Requirements Document (PRD) | `docs/PRD-renal-pulse.md` |
 | System Scope & User Flow Specification | `docs/USER_FLOWS.md` |
+| Vision Ingestion Technical Specification | `docs/specs/005-vision-ocr-ingestion.md` |
 | Clinical Formulas & Validation Criteria | `docs/CLINICAL_FORMULAS.md` |
 | Technical Architecture & Schemas | `docs/ARCHITECTURE.md` |
 | Data Model & Synthetic Schema | `data/schemas/patient_schema.json` |

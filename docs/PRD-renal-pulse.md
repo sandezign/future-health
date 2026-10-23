@@ -13,23 +13,28 @@
 
 RENAL-PULSE is a cardiorenal population health engine that converts routine, latent primary care laboratory data (serum creatinine, blood pressure, urine dipstick) into early upstream clinical intervention before patients develop irreversible End-Stage Kidney Disease (ESKD) requiring lifelong hemodialysis.
 
-* **Product Area:** Population Health, Primary Care Clinical Decision Support (CDS), Patient Engagement.
+To resolve the real-world **"Physical-to-Digital Chasm"** where over 85% of screening results are handed to patients as printed paper slips from private standalone laboratories (e.g., Prodia, PureHealth, SEHA) or visa medical checkups, RENAL-PULSE incorporates the **Snap-to-Care Vision Ingestion Gateway**. This pure-software, zero-hardware document AI pipeline ingests smartphone photos and scanned PDFs, normalizes biomarkers to HL7 FHIR standards with source visual citations, and automatically actuates the closed-loop clinical and behavioral intervention.
+
+* **Product Area:** Population Health, Clinical Document AI, Primary Care Clinical Decision Support (CDS), Patient Behavioral Engagement.
 * **Work Type:** New Product / Core Platform MVP.
 * **Context Documentation:**
   * Strategic & Competition Brief: [docs/INITIAL_CONTEXT.md](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/INITIAL_CONTEXT.md)
+  * Research & Ideation Synthesis: [docs/research/RESEARCH_AND_IDEATION_SYNTHESIS.md](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/research/RESEARCH_AND_IDEATION_SYNTHESIS.md)
   * Problem Space Research & Discovery: [docs/research/PROBLEM_SPACE_DISCOVERY.md](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/research/PROBLEM_SPACE_DISCOVERY.md)
   * System Architecture & User Flows: [docs/USER_FLOWS.md](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/USER_FLOWS.md)
   * Clinical Mathematical Proofs: [docs/CLINICAL_FORMULAS.md](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/CLINICAL_FORMULAS.md)
+  * Vision Ingestion Technical Spec: [docs/specs/005-vision-ocr-ingestion.md](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/specs/005-vision-ocr-ingestion.md)
 
 ---
 
 ## 2. Product Objective
 
-1. **Bridge the "Signal-to-Action Translation Chasm":** Transform static, siloed primary care lab values into automated longitudinal trajectory alerts (eGFR slope and 4-variable KFRE risk scores).
-2. **Eliminate Clinician Therapeutic Inertia:** Empower frontline primary care physicians (facing 3–5 minute consults) to safely prescribe guideline-directed medical therapy (GDMT: SGLT2i + ARB) with 1-click pre-filled order sets and reassurance regarding benign hemodynamic dips.
-3. **Overcome the "Asymptomatic Trap":** Activate asymptomatic high-risk patients via culturally resonant WhatsApp dialogue using intuitive metaphors (*"Saringan Dapur" / Kitchen Filter*) to achieve verified clinic attendance.
-4. **Preserve Healthcare Insurance Solvency:** Lower downstream catastrophic hemodialysis claims for national and regional health systems (e.g., BPJS Kesehatan, Abu Dhabi Department of Health).
-5. **Existing Behavior to Preserve:** Ensure clinicians retain final prescription authority and can adjust or reject CDS recommendations without interface blockers.
+1. **Bridge the "Physical-to-Digital Paper Chasm":** Liberate dark clinical biomarkers trapped in printed paper laboratory reports and external clinic PDFs into interoperable HL7 FHIR R4 resources in $<2\text{ seconds}$ via zero-hardware smartphone computer vision.
+2. **Bridge the "Signal-to-Action Translation Chasm":** Transform static, siloed primary care lab values into automated longitudinal trajectory alerts (eGFR slope and 4-variable KFRE risk scores).
+3. **Eliminate Clinician Therapeutic Inertia:** Empower frontline primary care physicians (facing 3–5 minute consults) to safely prescribe guideline-directed medical therapy (GDMT: SGLT2i + ARB) with 1-click pre-filled order sets and reassurance regarding benign hemodynamic dips.
+4. **Overcome the "Asymptomatic Trap":** Activate asymptomatic high-risk patients via culturally resonant WhatsApp dialogue using intuitive metaphors (*"Saringan Dapur" / Kitchen Filter*) to achieve verified clinic attendance.
+5. **Preserve Healthcare Insurance Solvency:** Lower downstream catastrophic hemodialysis claims for national and regional health systems (e.g., BPJS Kesehatan, Abu Dhabi Department of Health).
+6. **Existing Behavior to Preserve:** Ensure clinicians retain final prescription authority and can inspect original source bounding boxes without interface blockers.
 
 ---
 
@@ -37,8 +42,9 @@ RENAL-PULSE is a cardiorenal population health engine that converts routine, lat
 
 | User / Stakeholder | Desired Outcome | Friction / Risk Reduced |
 | :--- | :--- | :--- |
-| **Frontline Physician (Puskesmas/FKTP)** | Confidently identify rapid progressors within 30 seconds and order organ-protective therapy with safety monitoring in 1 click. | Reduces dosing anxiety, eliminates manual eGFR slope math, and overcomes fear of transient creatinine dips. |
-| **Asymptomatic Patient (Diabetic/Hypertensive)** | Understand silent renal vulnerability in plain language and confirm a primary care appointment without anxiety. | Eliminates denial of illness caused by lack of symptoms; demystifies chronic kidney medication safety. |
+| **Frontline Physician (Puskesmas / Family Medicine)** | Confidently identify rapid progressors within 30 seconds, inspect original paper source citations, and order GDMT with 1 click. | Reduces dosing anxiety, eliminates manual eGFR slope math, and overcomes fear of transient creatinine dips. |
+| **Triage Nurse / Intake Clerk (Primary Clinic)** | Ingest paper lab slips from external labs or patients in $<5\text{ seconds}$ with automated quality checks. | Eliminates 15–20 minute manual data entry drag and prevents transcription errors. |
+| **Asymptomatic Patient (Diabetic / Hypertensive)** | Snap a photo of their lab report, understand silent renal vulnerability in plain language, and confirm a clinic appointment. | Eliminates denial of illness caused by lack of symptoms; demystifies chronic kidney medication safety. |
 | **Community Health Worker (Kader / CHW)** | Receive prioritized geolocated lists of high-risk patients who have lapsed on prescriptions or appointments. | Eliminates manual tracking and disconnected community outreach. |
 | **Health Authority / Payer Executive** | Visualize regional cardiorenal heatmaps and simulate multi-year cost offsets of dialysis cases averted. | Eliminates blind spots in regional disease progression and reactive catastrophic claims budgeting. |
 
@@ -47,7 +53,14 @@ RENAL-PULSE is a cardiorenal population health engine that converts routine, lat
 ## 4. Scope
 
 ### In-Scope
-* **Data Ingestion Pipeline:** Standard REST API accepting batch CSV and FHIR-compliant JSON containing routine primary care inputs: Serum Creatinine, Blood Pressure, Urinalysis (dipstick protein / spot uACR), Fasting Blood Glucose / HbA1c, Age, and Sex.
+* **Multi-Modal Vision & OCR Ingestion Pipeline (Snap-to-Care Gateway):**
+  * Dedicated REST API (`POST /api/v1/ocr/ingest-lab-slip`) accepting multi-part image uploads (JPEG, PNG) and PDF documents.
+  * Image preprocessing and automated quality gating: Laplacian blur variance detection ($\text{variance} \ge 100$) and resolution checks.
+  * Zero-template tabular layout analysis extracting: Serum Creatinine, eGFR, Dipstick Protein, Blood Pressure, and Fasting Blood Glucose / HbA1c.
+  * Clinical entity normalization mapping extracted analytes to standard LOINC (`2160-0` Creatinine, `33914-3` eGFR, `2888-6` Protein) and SNOMED CT codes.
+  * Human-in-the-Loop (HITL) confidence gate: extractions with confidence $\ge 90\%$ auto-promote to FHIR; $<90\%$ routes to a nurse verification queue.
+  * Bounding-box spatial coordinate tracking (`[ymin, xmin, ymax, xmax]`) for visual explainability.
+* **Direct Data Ingestion Pipeline:** Standard REST API accepting batch CSV and FHIR-compliant JSON feeds from electronic LIS / EHR systems (Malaffi HIE / SatuSehat).
 * **Algorithmic Trajectory Engine:**
   * Race-free CKD-EPI 2021 Creatinine formula calculation.
   * Ordinary Least Squares (OLS) longitudinal eGFR slope regression with progression tiering.
@@ -56,10 +69,12 @@ RENAL-PULSE is a cardiorenal population health engine that converts routine, lat
 * **Doctor Clinical Copilot (Web Application):**
   * Patient registry list sorted by progression velocity and failure risk.
   * Interactive dual-chart visualizer (historical trajectory + 5-year dialysis horizon).
+  * Source Visual Citation Lightbox: Clicking any OCR-ingested biomarker displays the original scanned document with an interactive green bounding-box overlay.
   * 1-Click GDMT Order Card (pre-filled Dapagliflozin/Empagliflozin + Losartan + 4-week reflex safety labs).
   * Educational modal on benign hemodynamic dip ($\le 30\%$).
 * **Patient Behavioral WhatsApp Agent:**
   * Asynchronous conversational interaction via WhatsApp API.
+  * Multi-channel entry point: Patient can snap a photo of their lab slip directly within WhatsApp to initiate care.
   * Intuitive metaphor-based risk translation (English & Bahasa Indonesia).
   * Interactive quick-reply decision tree addressing medication safety.
   * Direct appointment slot selection and clinic synchronization.
@@ -74,6 +89,7 @@ RENAL-PULSE is a cardiorenal population health engine that converts routine, lat
 * Pediatric nephrology models (patients $<18\text{ years old}$).
 * Real-time life-threatening emergency dispatch (e.g., acute pulmonary edema / stroke triage).
 * Direct automated drug dispensing without licensed physician authorization.
+* Specialized physical scanning hardware or custom hardware kiosks (100% software & standard smartphone/scanner compatible).
 
 ---
 
@@ -81,12 +97,15 @@ RENAL-PULSE is a cardiorenal population health engine that converts routine, lat
 
 | ID | Requirement | Priority | Notes |
 | :--- | :--- | :---: | :--- |
+| **FR-0A** | System must ingest smartphone photos (JPEG/PNG) and scanned PDFs of paper lab slips via `POST /api/v1/ocr/ingest-lab-slip`, execute Laplacian blur gating, and parse key analytes. | P0 | Rejects blurry images ($\text{variance} < 100$); extracts Creatinine, eGFR, Dipstick Protein, BP, Glucose. |
+| **FR-0B** | System must route extractions with confidence $<90\%$ on key analytes to a Human-in-the-Loop (HITL) nurse verification queue with bounding-box highlights. | P0 | Prevents unverified medical extractions from reaching clinical decision support without human sign-off. |
 | **FR-1** | System must ingest patient records via REST API accepting FHIR JSON and tabular CSV with baseline vitals and serial lab tests. | P0 | Validates age, sex, serum creatinine, and date stamps. |
 | **FR-2** | System must calculate eGFR for every creatinine record using the race-free CKD-EPI 2021 equation. | P0 | Cites Inker et al., NEJM 2021. |
 | **FR-3** | System must compute longitudinal eGFR slope using OLS linear regression across serial records spanning $\ge 90\text{ days}$. | P0 | Flags "Rapid Progressor" if slope $\le -3.0\text{ mL/min/1.73m}^2/\text{yr}$. |
 | **FR-4** | System must compute 2-year and 5-year ESKD risk probability via the Tangri 4-Variable KFRE equation. | P0 | Calibrated to non-North American baseline survival constants. |
 | **FR-5** | Web UI must display patient risk registry with color-coded KDIGO 2024 risk badges (Green, Yellow, Orange, Red). | P0 | Follows Feature-Sliced Design (FSD) architecture. |
 | **FR-6** | Web UI must render an interactive historical eGFR trajectory chart alongside projected trajectory to ESKD (eGFR $<15$). | P0 | Sub-second rendering using SVG/Recharts. |
+| **FR-6B**| Web UI must provide an interactive Source Visual Citation Lightbox displaying the original scanned document with highlighted bounding boxes when clicking an OCR-derived biomarker. | P0 | Delivers explainable AI and clinical auditability to prevent AI hallucination fears. |
 | **FR-7** | Web UI must provide a 1-Click GDMT order card recommending SGLT2i + ARB with automated 4-week safety order reflex. | P0 | Complies with KDIGO 2024 Class 1A guidelines. |
 | **FR-8** | Web UI must display a hemodynamic dip guidance modal if a physician expresses hesitation or questions creatinine change. | P1 | Educates that creatinine increases $\le 30\%$ are benign and expected. |
 | **FR-9** | WhatsApp Agent must trigger empathetic outreach in Bahasa Indonesia or English when a patient is flagged as high-risk. | P0 | Uses the "Kitchen Water Filter" metaphor. |
@@ -109,11 +128,16 @@ RENAL-PULSE is a cardiorenal population health engine that converts routine, lat
   * $\ge 3+ \rightarrow \text{uACR } 1000\text{ mg/g}$
   * Display clear disclaimer: *"Approximated from dipstick protein; reflex quantitative uACR ordered."*
 
-### 6.2 Prescribing Safety Rules
+### 6.2 Optical Ingestion & Document AI Rules
+* **Image Quality Threshold:** Uploaded images must have a minimum resolution equivalent to $300\text{ DPI}$ for letter size ($\ge 1200 \times 1600\text{ pixels}$) and a Laplacian blur variance $\ge 100$. Blurry or degraded images trigger an immediate real-time capture guidance prompt.
+* **Extraction Confidence Threshold:** Any critical analyte (Creatinine, eGFR, Protein) extracted with confidence $<90\%$ must be gated from automatic clinical pipeline progression until confirmed by a nurse in the HITL review queue.
+* **Document Privacy & Ephemeral Storage:** Uploaded raw images are processed in RAM; once extracted text, bounding-box coordinates, and FHIR resources are generated, raw image files are encrypted at rest with strict role-based access control (RBAC).
+
+### 6.3 Prescribing Safety Rules
 * **SGLT2i Floor:** Do not recommend initiating SGLT2i if baseline $\text{eGFR} < 20\text{ mL/min/1.73m}^2$ (per EMPA-KIDNEY / DAPA-CKD inclusion criteria).
 * **Hemodynamic Dip Threshold:** At the 4-week follow-up, an eGFR drop up to $30\%$ from baseline is clinically acceptable. Only flag for dose reduction or ultrasound investigation if eGFR reduction exceeds $30\%$ or serum potassium exceeds $5.5\text{ mEq/L}$.
 
-### 6.3 Patient Communication Rules
+### 6.4 Patient Communication Rules
 * **No Diagnostic Shock Copy:** The WhatsApp agent must never use alarmist terminology like *"Gagal Ginjal Akut"*, *"Kerusakan Parah"*, or *"Dialisis Segera"*. All messaging must reframe kidney health around proactive protection and filtering efficiency.
 * **Patient Privacy:** Never transmit full National Identity Numbers (NIK) or unmasked raw lab values over unencrypted chat channels.
 
@@ -124,6 +148,7 @@ RENAL-PULSE is a cardiorenal population health engine that converts routine, lat
 | Design / Engineering Artifact | Source Document / Reference |
 | :--- | :--- |
 | **User Flows & Branching Logic** | [docs/USER_FLOWS.md](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/USER_FLOWS.md) |
+| **Vision OCR Ingestion Specification** | [docs/specs/005-vision-ocr-ingestion.md](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/specs/005-vision-ocr-ingestion.md) |
 | **Clinical Math & Benchmark Tests** | [docs/CLINICAL_FORMULAS.md](file:///Users/mb-rci-backup/Documents/antigravity/future-health/docs/CLINICAL_FORMULAS.md) |
 | **Patient Data Model & Schema** | [`data/schemas/patient_schema.json`](file:///Users/mb-rci-backup/Documents/antigravity/future-health/data/schemas/patient_schema.json) |
 | **Frontend Architecture Rules** | Feature-Sliced Design (`app → pages → widgets → features → entities → shared`) |
@@ -133,9 +158,9 @@ RENAL-PULSE is a cardiorenal population health engine that converts routine, lat
 
 ## 8. Technical & Integration Notes
 
-* **Backend Service (`backend/`):** FastAPI running on Python 3.11+. Pure algorithmic modules in `app/services/` for CKD-EPI, OLS slope, and KFRE.
+* **Backend Service (`backend/`):** FastAPI running on Python 3.11+. Ingestion modules in `app/services/ocr/` and pure algorithmic modules in `app/services/` for CKD-EPI, OLS slope, and KFRE.
 * **Frontend Application (`frontend/`):** React 19, TypeScript, Vite, Tailwind CSS. Must maintain sub-400ms interactions (Doherty Threshold).
-* **Interoperability:** Data schemas align with HL7 FHIR (Observation, Patient, Condition resources) to enable plug-and-play pilots with Indonesia's SATUSEHAT / BPJS PCare and Abu Dhabi's Malaffi HIE.
+* **Interoperability:** Data schemas align with HL7 FHIR (Observation, DiagnosticReport, Patient, Condition resources) to enable plug-and-play pilots with Indonesia's SATUSEHAT / BPJS PCare and Abu Dhabi's Malaffi HIE.
 * **Messaging Webhook:** Twilio / WhatsApp Cloud API webhook handler delivering structured templates with callback logging.
 
 ---
@@ -143,6 +168,7 @@ RENAL-PULSE is a cardiorenal population health engine that converts routine, lat
 ## 9. Success Metrics
 
 ### 9.1 Quantitative Metrics
+* **OCR Extraction Accuracy:** $\ge 95\%$ field-level accuracy across standard printed lab slips (Prodia, SEHA, PureHealth) with end-to-end extraction latency $<2\text{ seconds}$.
 * **Interception Rate:** $\ge 85\%$ of synthetic and clinical pilot rapid progressors correctly flagged by the trajectory engine.
 * **Physician Adoption:** $\le 30\text{ seconds}$ average time spent by a primary care physician to review trajectory and authorize the 1-click GDMT order set.
 * **Patient Activation Rate:** $\ge 60\%$ of contacted asymptomatic high-risk patients respond to the WhatsApp agent and book a confirmed clinic visit.
@@ -151,13 +177,16 @@ RENAL-PULSE is a cardiorenal population health engine that converts routine, lat
 ### 9.2 Qualitative Metrics
 * Zero reports of clinician alert fatigue during simulated 10-patient primary care shifts.
 * Patient comprehension score $\ge 80\%$ regarding why kidney health matters even when asymptomatic.
+* High clinician trust score ($\ge 90\%$) driven by interactive Source Visual Citation bounding-box overlays.
 
 ---
 
 ## 10. Acceptance Criteria
 
+* [ ] **AC-0 (Vision Ingestion):** Uploading a printed lab slip image via `POST /api/v1/ocr/ingest-lab-slip` returns structured HL7 FHIR JSON with normalized LOINC codes in $<2\text{ seconds}$, rejecting blurry images ($\text{variance} < 100$).
 * [ ] **AC-1 (Engine Math):** All unit tests in `backend/tests/` verify CKD-EPI 2021, OLS slope, and KFRE against published clinical benchmarks with zero margin of error $>0.1\%$.
 * [ ] **AC-2 (Doctor Copilot UI):** Physician can navigate from the patient list, inspect the eGFR trajectory chart, and click "Authorize GDMT Order Set" within 3 clicks.
+* [ ] **AC-2B (Source Visual Citation):** Clicking an OCR-derived biomarker badge in the Doctor Copilot opens a lightbox showing the original scanned paper document with an interactive green bounding box centered on the analyte.
 * [ ] **AC-3 (Safety Guardrails):** System explicitly displays the 4-week safety order set (Creatinine + Potassium) whenever GDMT is prescribed.
 * [ ] **AC-4 (WhatsApp Dialogue):** Simulated WhatsApp webhook completes a full multi-turn interaction in Bahasa Indonesia and English, terminating in a confirmed appointment timestamp.
 * [ ] **AC-5 (Community Escalation):** System successfully creates a prioritized CHW ticket when simulated medication adherence falls below 30 days.

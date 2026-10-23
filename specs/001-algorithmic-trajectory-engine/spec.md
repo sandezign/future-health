@@ -91,6 +91,7 @@ Expose patient trajectories and GDMT recommendations via FastAPI.
 - **FR-008**: System MUST screen for SGLT2i contraindications ($\text{eGFR} < 20$, T1D).
 - **FR-009**: System MUST screen for RAS blockade contraindications ($\text{K}^+ > 5.5\text{ mEq/L}$).
 - **FR-010**: System MUST include hemodynamic dip reassurance explaining benign $\le 30\%$ initial eGFR drop.
+- **FR-011**: System MUST accept observations from both structured EHR feeds and Snap-to-Care optical ingestion (`005-vision-ocr-ingestion`), preserving source document metadata.
 
 ## Success Criteria *(mandatory)*
 
