@@ -1,0 +1,600 @@
+{
+  "$schema": "https://hl7.org/fhir/R4/bundle.schema.json",
+  "generated_at": "2026-10-23T20:00:00Z",
+  "program": "Abu Dhabi Mandatory 570-Gene Premarital Screening (ADPHC / DoH)",
+  "couples": [
+    {
+      "couple_id": "CPL-01",
+      "region": "Abu Dhabi Central",
+      "wedding_date": "2026-11-06",
+      "days_until_wedding": 14,
+      "triage_priority": "TIER_1_URGENT",
+      "overall_status": "INCOMPATIBLE",
+      "target_gene": "HBB",
+      "condition_name": "Beta-Thalassemia Major",
+      "omim_id": "603902",
+      "recurrence_risk": 0.25,
+      "partner_a": {
+        "id": "PAT-AE-001",
+        "full_name": "Rashid Al-Falasi",
+        "gender": "male",
+        "birth_date": "1996-05-14",
+        "emirates_id_hash": "784-1996-8472911-3",
+        "screening_date": "2026-10-15",
+        "variants": [
+          {
+            "gene_symbol": "HBB",
+            "condition_name": "Beta-Thalassemia Major",
+            "omim_id": "603902",
+            "hgvs_c": "c.93-21G>A",
+            "hgvs_p": "p.?",
+            "zygosity": "heterozygous",
+            "clinvar_id": "VCV000015444",
+            "clinvar_significance": "Pathogenic",
+            "severity_tier": "TIER_1_LETHAL",
+            "is_vus": false,
+            "plain_summary": "Carrier of one altered copy of the HBB gene. You are completely healthy with no symptoms."
+          }
+        ]
+      },
+      "partner_b": {
+        "id": "PAT-AE-002",
+        "full_name": "Mariam Al-Maktoum",
+        "gender": "female",
+        "birth_date": "1998-11-22",
+        "emirates_id_hash": "784-1998-9281744-1",
+        "screening_date": "2026-10-15",
+        "variants": [
+          {
+            "gene_symbol": "HBB",
+            "condition_name": "Beta-Thalassemia Major",
+            "omim_id": "603902",
+            "hgvs_c": "c.118C>T",
+            "hgvs_p": "p.Gln40Ter",
+            "zygosity": "heterozygous",
+            "clinvar_id": "VCV000015456",
+            "clinvar_significance": "Pathogenic",
+            "severity_tier": "TIER_1_LETHAL",
+            "is_vus": false,
+            "plain_summary": "Carrier of one altered copy of the HBB gene. You are completely healthy with normal red blood cell function."
+          }
+        ]
+      }
+    },
+    {
+      "couple_id": "CPL-02",
+      "region": "Al Ain",
+      "wedding_date": "2026-12-07",
+      "days_until_wedding": 45,
+      "triage_priority": "TIER_1_ROUTINE",
+      "overall_status": "INCOMPATIBLE",
+      "target_gene": "SMN1",
+      "condition_name": "Spinal Muscular Atrophy Type 1",
+      "omim_id": "253300",
+      "recurrence_risk": 0.25,
+      "partner_a": {
+        "id": "PAT-AE-003",
+        "full_name": "Sultan Al-Nuaimi",
+        "gender": "male",
+        "birth_date": "1995-02-18",
+        "emirates_id_hash": "784-1995-1827463-8",
+        "screening_date": "2026-10-16",
+        "variants": [
+          {
+            "gene_symbol": "SMN1",
+            "condition_name": "Spinal Muscular Atrophy Type 1",
+            "omim_id": "253300",
+            "hgvs_c": "c.840C>T",
+            "hgvs_p": "p.=",
+            "zygosity": "heterozygous",
+            "clinvar_id": "VCV000021678",
+            "clinvar_significance": "Pathogenic",
+            "severity_tier": "TIER_1_LETHAL",
+            "is_vus": false,
+            "plain_summary": "Healthy silent carrier for SMN1 exon 7 deletion/mutation."
+          }
+        ]
+      },
+      "partner_b": {
+        "id": "PAT-AE-004",
+        "full_name": "Fatima Al-Kaabi",
+        "gender": "female",
+        "birth_date": "1997-08-30",
+        "emirates_id_hash": "784-1997-6453912-4",
+        "screening_date": "2026-10-16",
+        "variants": [
+          {
+            "gene_symbol": "SMN1",
+            "condition_name": "Spinal Muscular Atrophy Type 1",
+            "omim_id": "253300",
+            "hgvs_c": "c.840C>T",
+            "hgvs_p": "p.=",
+            "zygosity": "heterozygous",
+            "clinvar_id": "VCV000021678",
+            "clinvar_significance": "Pathogenic",
+            "severity_tier": "TIER_1_LETHAL",
+            "is_vus": false,
+            "plain_summary": "Healthy silent carrier for SMN1 exon 7 deletion/mutation."
+          }
+        ]
+      }
+    },
+    {
+      "couple_id": "CPL-03",
+      "region": "Abu Dhabi Central",
+      "wedding_date": "2027-01-06",
+      "days_until_wedding": 75,
+      "triage_priority": "TIER_2_MODERATE",
+      "overall_status": "INCOMPATIBLE",
+      "target_gene": "CFTR",
+      "condition_name": "Cystic Fibrosis",
+      "omim_id": "219700",
+      "recurrence_risk": 0.25,
+      "partner_a": {
+        "id": "PAT-AE-005",
+        "full_name": "Zayed Al-Hamed",
+        "gender": "male",
+        "birth_date": "1994-07-12",
+        "emirates_id_hash": "784-1994-5544332-9",
+        "screening_date": "2026-10-17",
+        "variants": [
+          {
+            "gene_symbol": "CFTR",
+            "condition_name": "Cystic Fibrosis",
+            "omim_id": "219700",
+            "hgvs_c": "c.1521_1523delCTT",
+            "hgvs_p": "p.Phe508del",
+            "zygosity": "heterozygous",
+            "clinvar_id": "VCV000007105",
+            "clinvar_significance": "Pathogenic",
+            "severity_tier": "TIER_2_DEBILITATING",
+            "is_vus": false,
+            "plain_summary": "Heterozygous carrier for classic CFTR delta F508 mutation."
+          }
+        ]
+      },
+      "partner_b": {
+        "id": "PAT-AE-006",
+        "full_name": "Noora Al-Shamsi",
+        "gender": "female",
+        "birth_date": "1996-03-25",
+        "emirates_id_hash": "784-1996-1199887-2",
+        "screening_date": "2026-10-17",
+        "variants": [
+          {
+            "gene_symbol": "CFTR",
+            "condition_name": "Cystic Fibrosis",
+            "omim_id": "219700",
+            "hgvs_c": "c.1521_1523delCTT",
+            "hgvs_p": "p.Phe508del",
+            "zygosity": "heterozygous",
+            "clinvar_id": "VCV000007105",
+            "clinvar_significance": "Pathogenic",
+            "severity_tier": "TIER_2_DEBILITATING",
+            "is_vus": false,
+            "plain_summary": "Heterozygous carrier for classic CFTR delta F508 mutation."
+          }
+        ]
+      }
+    },
+    {
+      "couple_id": "CPL-04",
+      "region": "Al Dhafra",
+      "wedding_date": "2026-11-13",
+      "days_until_wedding": 21,
+      "triage_priority": "TIER_1_URGENT",
+      "overall_status": "INCOMPATIBLE",
+      "target_gene": "CYP21A2",
+      "condition_name": "Congenital Adrenal Hyperplasia (Classic)",
+      "omim_id": "201910",
+      "recurrence_risk": 0.25,
+      "partner_a": {
+        "id": "PAT-AE-007",
+        "full_name": "Hamdan Al-Zaabi",
+        "gender": "male",
+        "birth_date": "1993-09-09",
+        "emirates_id_hash": "784-1993-7766554-1",
+        "screening_date": "2026-10-18",
+        "variants": [
+          {
+            "gene_symbol": "CYP21A2",
+            "condition_name": "Congenital Adrenal Hyperplasia (Classic)",
+            "omim_id": "201910",
+            "hgvs_c": "c.518T>A",
+            "hgvs_p": "p.Ile173Asn",
+            "zygosity": "heterozygous",
+            "clinvar_id": "VCV000012111",
+            "clinvar_significance": "Pathogenic",
+            "severity_tier": "TIER_1_LETHAL",
+            "is_vus": false,
+            "plain_summary": "Heterozygous carrier for CYP21A2 salt-wasting allele."
+          }
+        ]
+      },
+      "partner_b": {
+        "id": "PAT-AE-008",
+        "full_name": "Salama Al-Mazrouei",
+        "gender": "female",
+        "birth_date": "1995-12-04",
+        "emirates_id_hash": "784-1995-2233441-6",
+        "screening_date": "2026-10-18",
+        "variants": [
+          {
+            "gene_symbol": "CYP21A2",
+            "condition_name": "Congenital Adrenal Hyperplasia (Classic)",
+            "omim_id": "201910",
+            "hgvs_c": "c.518T>A",
+            "hgvs_p": "p.Ile173Asn",
+            "zygosity": "heterozygous",
+            "clinvar_id": "VCV000012111",
+            "clinvar_significance": "Pathogenic",
+            "severity_tier": "TIER_1_LETHAL",
+            "is_vus": false,
+            "plain_summary": "Heterozygous carrier for CYP21A2 salt-wasting allele."
+          }
+        ]
+      }
+    },
+    {
+      "couple_id": "CPL-05",
+      "region": "Al Ain",
+      "wedding_date": "2027-01-21",
+      "days_until_wedding": 90,
+      "triage_priority": "TIER_2_MODERATE",
+      "overall_status": "INCOMPATIBLE",
+      "target_gene": "PCDH15",
+      "condition_name": "Usher Syndrome Type 1F",
+      "omim_id": "602083",
+      "recurrence_risk": 0.25,
+      "partner_a": {
+        "id": "PAT-AE-009",
+        "full_name": "Mansoor Al-Rumaithi",
+        "gender": "male",
+        "birth_date": "1997-04-16",
+        "emirates_id_hash": "784-1997-8899112-5",
+        "screening_date": "2026-10-19",
+        "variants": [
+          {
+            "gene_symbol": "PCDH15",
+            "condition_name": "Usher Syndrome Type 1F",
+            "omim_id": "602083",
+            "hgvs_c": "c.733C>T",
+            "hgvs_p": "p.Arg245Ter",
+            "zygosity": "heterozygous",
+            "clinvar_id": "VCV000018990",
+            "clinvar_significance": "Pathogenic",
+            "severity_tier": "TIER_2_DEBILITATING",
+            "is_vus": false,
+            "plain_summary": "Healthy carrier for PCDH15 nonsense variant."
+          }
+        ]
+      },
+      "partner_b": {
+        "id": "PAT-AE-010",
+        "full_name": "Sheikha Al-Qasimi",
+        "gender": "female",
+        "birth_date": "1999-01-19",
+        "emirates_id_hash": "784-1999-3344119-0",
+        "screening_date": "2026-10-19",
+        "variants": [
+          {
+            "gene_symbol": "PCDH15",
+            "condition_name": "Usher Syndrome Type 1F",
+            "omim_id": "602083",
+            "hgvs_c": "c.733C>T",
+            "hgvs_p": "p.Arg245Ter",
+            "zygosity": "heterozygous",
+            "clinvar_id": "VCV000018990",
+            "clinvar_significance": "Pathogenic",
+            "severity_tier": "TIER_2_DEBILITATING",
+            "is_vus": false,
+            "plain_summary": "Healthy carrier for PCDH15 nonsense variant."
+          }
+        ]
+      }
+    },
+    {
+      "couple_id": "CPL-06",
+      "region": "Abu Dhabi Central",
+      "wedding_date": "2026-12-20",
+      "days_until_wedding": 58,
+      "triage_priority": "COMPATIBLE",
+      "overall_status": "COMPATIBLE",
+      "target_gene": null,
+      "condition_name": null,
+      "omim_id": null,
+      "recurrence_risk": 0.0,
+      "partner_a": {
+        "id": "PAT-AE-011",
+        "full_name": "Khalid Al-Dhaheri",
+        "gender": "male",
+        "birth_date": "1995-10-10",
+        "emirates_id_hash": "784-1995-4422119-7",
+        "screening_date": "2026-10-20",
+        "variants": [
+          {
+            "gene_symbol": "HBB",
+            "condition_name": "Beta-Thalassemia Major",
+            "omim_id": "603902",
+            "hgvs_c": "c.93-21G>A",
+            "hgvs_p": "p.?",
+            "zygosity": "heterozygous",
+            "clinvar_id": "VCV000015444",
+            "clinvar_significance": "Pathogenic",
+            "severity_tier": "TIER_1_LETHAL",
+            "is_vus": false,
+            "plain_summary": "Carrier of one altered HBB copy. Partner does not carry this trait; no combined risk."
+          }
+        ]
+      },
+      "partner_b": {
+        "id": "PAT-AE-012",
+        "full_name": "Ayesha Al-Suwaidi",
+        "gender": "female",
+        "birth_date": "1997-06-15",
+        "emirates_id_hash": "784-1997-7711228-3",
+        "screening_date": "2026-10-20",
+        "variants": [
+          {
+            "gene_symbol": "CFTR",
+            "condition_name": "Cystic Fibrosis",
+            "omim_id": "219700",
+            "hgvs_c": "c.1521_1523delCTT",
+            "hgvs_p": "p.Phe508del",
+            "zygosity": "heterozygous",
+            "clinvar_id": "VCV000007105",
+            "clinvar_significance": "Pathogenic",
+            "severity_tier": "TIER_2_DEBILITATING",
+            "is_vus": false,
+            "plain_summary": "Carrier of one altered CFTR copy. Partner does not carry this trait; no combined risk."
+          }
+        ]
+      }
+    },
+    {
+      "couple_id": "CPL-07",
+      "region": "Al Ain",
+      "wedding_date": "2027-02-14",
+      "days_until_wedding": 114,
+      "triage_priority": "COMPATIBLE",
+      "overall_status": "COMPATIBLE",
+      "target_gene": null,
+      "condition_name": null,
+      "omim_id": null,
+      "recurrence_risk": 0.0,
+      "partner_a": {
+        "id": "PAT-AE-013",
+        "full_name": "Omar Al-Breiki",
+        "gender": "male",
+        "birth_date": "1996-01-08",
+        "emirates_id_hash": "784-1996-3399221-8",
+        "screening_date": "2026-10-21",
+        "variants": [
+          {
+            "gene_symbol": "SMN1",
+            "condition_name": "Spinal Muscular Atrophy Type 1",
+            "omim_id": "253300",
+            "hgvs_c": "c.840C>T",
+            "hgvs_p": "p.=",
+            "zygosity": "heterozygous",
+            "clinvar_id": "VCV000021678",
+            "clinvar_significance": "Pathogenic",
+            "severity_tier": "TIER_1_LETHAL",
+            "is_vus": false,
+            "plain_summary": "Carrier of SMN1 variant. Partner is wild-type; no shared risk."
+          }
+        ]
+      },
+      "partner_b": {
+        "id": "PAT-AE-014",
+        "full_name": "Hessa Al-Marzooqi",
+        "gender": "female",
+        "birth_date": "1998-05-19",
+        "emirates_id_hash": "784-1998-5511334-9",
+        "screening_date": "2026-10-21",
+        "variants": []
+      }
+    },
+    {
+      "couple_id": "CPL-08",
+      "region": "Abu Dhabi Central",
+      "wedding_date": "2026-11-28",
+      "days_until_wedding": 36,
+      "triage_priority": "COMPATIBLE",
+      "overall_status": "COMPATIBLE",
+      "target_gene": null,
+      "condition_name": null,
+      "omim_id": null,
+      "recurrence_risk": 0.0,
+      "partner_a": {
+        "id": "PAT-AE-015",
+        "full_name": "Mohamed Al-Khaja",
+        "gender": "male",
+        "birth_date": "1994-12-01",
+        "emirates_id_hash": "784-1994-6655443-0",
+        "screening_date": "2026-10-22",
+        "variants": []
+      },
+      "partner_b": {
+        "id": "PAT-AE-016",
+        "full_name": "Reem Al-Mansoori",
+        "gender": "female",
+        "birth_date": "1996-09-14",
+        "emirates_id_hash": "784-1996-8877665-2",
+        "screening_date": "2026-10-22",
+        "variants": []
+      }
+    },
+    {
+      "couple_id": "CPL-09",
+      "region": "Al Ain",
+      "wedding_date": "2027-02-14",
+      "days_until_wedding": 110,
+      "triage_priority": "TIER_1_ROUTINE",
+      "overall_status": "INCOMPATIBLE",
+      "target_gene": "PAH",
+      "condition_name": "Phenylketonuria (PKU)",
+      "omim_id": "261600",
+      "recurrence_risk": 0.25,
+      "partner_a": {
+        "id": "PAT-AE-017",
+        "full_name": "Tariq Al-Zaabi",
+        "gender": "male",
+        "birth_date": "2001-03-10",
+        "emirates_id_hash": "784-2001-9922114-5",
+        "screening_date": "2026-10-23",
+        "variants": [
+          {
+            "gene_symbol": "PAH",
+            "condition_name": "Phenylketonuria (PKU)",
+            "omim_id": "261600",
+            "hgvs_c": "c.1066-11G>A",
+            "hgvs_p": "p.?",
+            "zygosity": "heterozygous",
+            "clinvar_id": "VCV000000572",
+            "clinvar_significance": "Pathogenic",
+            "severity_tier": "TIER_1_LETHAL",
+            "is_vus": false,
+            "plain_summary": "Healthy carrier of one altered PAH gene. Completely asymptomatic. High clinical relevance for consanguineous first-cousin match."
+          }
+        ]
+      },
+      "partner_b": {
+        "id": "PAT-AE-018",
+        "full_name": "Reem Al-Zaabi",
+        "gender": "female",
+        "birth_date": "2003-07-25",
+        "emirates_id_hash": "784-2003-1122334-8",
+        "screening_date": "2026-10-23",
+        "variants": [
+          {
+            "gene_symbol": "PAH",
+            "condition_name": "Phenylketonuria (PKU)",
+            "omim_id": "261600",
+            "hgvs_c": "c.1222C>T",
+            "hgvs_p": "p.Arg408Trp",
+            "zygosity": "heterozygous",
+            "clinvar_id": "VCV000000583",
+            "clinvar_significance": "Pathogenic",
+            "severity_tier": "TIER_1_LETHAL",
+            "is_vus": false,
+            "plain_summary": "Healthy carrier of one altered PAH gene. Normal metabolism. 100% preventable via Halal PGT-M or strict neonatal dietary management."
+          }
+        ]
+      }
+    },
+    {
+      "couple_id": "CPL-010",
+      "region": "Al Dhafra",
+      "wedding_date": "2027-03-01",
+      "days_until_wedding": 129,
+      "triage_priority": "COMPATIBLE",
+      "overall_status": "COMPATIBLE",
+      "target_gene": null,
+      "condition_name": null,
+      "omim_id": null,
+      "recurrence_risk": 0.0,
+      "partner_a": {
+        "id": "PAT-AE-019",
+        "full_name": "Hazza Al-Dhaheri",
+        "gender": "male",
+        "birth_date": "1993-11-18",
+        "emirates_id_hash": "784-1993-3456789-0",
+        "screening_date": "2026-10-22",
+        "variants": []
+      },
+      "partner_b": {
+        "id": "PAT-AE-020",
+        "full_name": "Maitha Al-Falasi",
+        "gender": "female",
+        "birth_date": "1996-02-11",
+        "emirates_id_hash": "784-1996-9876543-2",
+        "screening_date": "2026-10-22",
+        "variants": []
+      }
+    },
+    {
+      "couple_id": "CPL-011",
+      "region": "Abu Dhabi Central",
+      "wedding_date": "2026-12-30",
+      "days_until_wedding": 68,
+      "triage_priority": "COMPATIBLE",
+      "overall_status": "COMPATIBLE",
+      "target_gene": null,
+      "condition_name": null,
+      "omim_id": null,
+      "recurrence_risk": 0.0,
+      "partner_a": {
+        "id": "PAT-AE-021",
+        "full_name": "Buti Al-Maktoum",
+        "gender": "male",
+        "birth_date": "1995-08-08",
+        "emirates_id_hash": "784-1995-5678901-2",
+        "screening_date": "2026-10-23",
+        "variants": []
+      },
+      "partner_b": {
+        "id": "PAT-AE-022",
+        "full_name": "Shamma Al-Otaiba",
+        "gender": "female",
+        "birth_date": "1998-04-14",
+        "emirates_id_hash": "784-1998-2109876-5",
+        "screening_date": "2026-10-23",
+        "variants": []
+      }
+    },
+    {
+      "couple_id": "CPL-012",
+      "region": "Al Ain",
+      "wedding_date": "2027-02-28",
+      "days_until_wedding": 128,
+      "triage_priority": "COMPATIBLE",
+      "overall_status": "COMPATIBLE",
+      "target_gene": null,
+      "condition_name": null,
+      "omim_id": null,
+      "recurrence_risk": 0.0,
+      "partner_a": {
+        "id": "PAT-AE-023",
+        "full_name": "Khalfan Al-Rumaithi",
+        "gender": "male",
+        "birth_date": "1994-03-30",
+        "emirates_id_hash": "784-1994-7890123-4",
+        "screening_date": "2026-10-23",
+        "variants": []
+      },
+      "partner_b": {
+        "id": "PAT-AE-024",
+        "full_name": "Rawdha Al-Hamed",
+        "gender": "female",
+        "birth_date": "1996-10-05",
+        "emirates_id_hash": "784-1996-4321098-7",
+        "screening_date": "2026-10-23",
+        "variants": []
+      }
+    }
+  ],
+  "population_epidemiology": {
+    "total_screened_couples": 1200,
+    "compatible_couples": 1098,
+    "incompatible_couples": 102,
+    "carrier_prevalence": {
+      "HBB": 0.084,
+      "SMN1": 0.022,
+      "CFTR": 0.019,
+      "CYP21A2": 0.013,
+      "PCDH15": 0.009,
+      "PAH": 0.011
+    },
+    "regional_distribution": {
+      "Abu Dhabi Central": { "total": 650, "incompatible": 52 },
+      "Al Ain": { "total": 380, "incompatible": 36 },
+      "Al Dhafra": { "total": 170, "incompatible": 14 }
+    },
+    "economic_impact": {
+      "cost_per_pediatric_case_aed": 5000000,
+      "projected_annual_averted_cases": 48,
+      "projected_5yr_savings_aed": 240000000
+    }
+  }
+}

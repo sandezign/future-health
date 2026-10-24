@@ -23,7 +23,10 @@ This file provides shared context for coding agents working in this repository. 
 | Track Alignment: Closing the Screening-to-Care Loop | `docs/CLOSING_THE_SCREENING_TO_CARE_LOOP.md` |
 | Problem Space & User Discovery Research | `docs/research/PROBLEM_SPACE_DISCOVERY.md` |
 | Product Requirements Document (PRD) | `docs/PRD-renal-pulse.md` |
-| System Scope & User Flow Specification | `docs/USER_FLOWS.md` |
+| System Scope & User Flow Specification (Renal-Pulse) | `docs/USER_FLOWS.md` |
+| GENO-BRIDGE Ecosystem & User Journey Specification | `docs/GENO_BRIDGE_ECOSYSTEM_AND_USER_JOURNEY.md` |
+| GENO-BRIDGE Product Requirements Document (PRD) | `docs/PRD-geno-bridge.md` |
+| GENO-BRIDGE Sprint Plan & Specs | `docs/specs/geno-sprint-plan.md` |
 | Vision Ingestion Technical Specification | `docs/specs/005-vision-ocr-ingestion.md` |
 | Clinical Formulas & Validation Criteria | `docs/CLINICAL_FORMULAS.md` |
 | Technical Architecture & Schemas | `docs/ARCHITECTURE.md` |

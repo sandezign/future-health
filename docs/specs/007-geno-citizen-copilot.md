@@ -16,11 +16,12 @@
 The **Citizen Mobile Copilot** is a mobile-first, culturally attuned web application tailored for Emirati citizens and couples undergoing mandatory 570-gene premarital genomic screening in Abu Dhabi. Designed in harmony with the **Sahatna** digital health aesthetic, it eliminates patient anxiety, fatalistic misconceptions, and social stigma by transforming raw laboratory sequencing codes into empathetic, actionable clarity.
 
 Key capabilities delivered:
-1. **Plain-Language Variant Translator:** Translates clinical genetic nomenclature (*HBB:c.93-21G>A*) into reassuring, non-pathologizing education emphasizing that carrier status is normal and healthy.
-2. **Interactive 4-Quadrant Mendelian Simulator:** Dynamically demonstrates the 25% affected, 50% carrier, and 25% unaffected probabilities, explicitly disproving the common Gambler's Fallacy ("1 in 4 total children").
-3. **Pre-Engagement SafeMatch Mobile Interface:** A dual-consent, peer-to-peer verification flow powered by client-side Bloom filter hashing, delivering instant binary compatibility reassurance before public family engagement.
-4. **Halal PGT-M & Thiqa Care Navigator:** Step-by-step guidance on Pre-implantation Genetic Testing for Monogenic Disorders (PGT-M), featuring direct citations from the UAE Fatwa Council and DoH-certified fertility centers (Cleveland Clinic Abu Dhabi, Fakih IVF).
-5. **Anonymous Cascade Risk Alert:** Enables high-risk individuals to generate privacy-shielded digital tokens for siblings and first cousins to encourage early preconception screening.
+1. **Premarital Wellness & Compatibility Starting Hub (`GenoCitizenStartPage`):** A trauma-informed, empathetic welcome hub that eliminates cognitive panic by providing clear intent-driven pathways before exposing clinical risk, complete with UAE Fatwa Council & DoH trust badges.
+2. **Plain-Language Variant Translator:** Translates clinical genetic nomenclature (*HBB:c.93-21G>A*, *PAH:c.1066-11G>A*) into reassuring, non-pathologizing education emphasizing that carrier status is normal and healthy.
+3. **Interactive 4-Quadrant Mendelian Simulator:** Dynamically demonstrates the 25% affected, 50% carrier, and 25% unaffected probabilities, explicitly disproving the common Gambler's Fallacy ("1 in 4 total children").
+4. **Pre-Engagement SafeMatch Mobile Interface:** A dual-consent, peer-to-peer verification flow powered by client-side Bloom filter hashing, delivering instant binary compatibility reassurance before public family engagement.
+5. **Halal PGT-M & Thiqa Care Navigator:** Step-by-step guidance on Pre-implantation Genetic Testing for Monogenic Disorders (PGT-M), featuring direct citations from the UAE Fatwa Council and DoH-certified fertility centers (Cleveland Clinic Abu Dhabi, Fakih IVF).
+6. **Scenario CPL-09 (Pre-Engagement Consanguineous Check):** Showcases first-cousin partners (Tariq & Reem) discovering a shared *PAH* (PKU) carrier state privately before engagement, seamlessly connecting to Halal PGT-M.
 
 ---
 
@@ -111,21 +112,16 @@ So that they can request targeted carrier screening before their own engagements
 frontend/src/
 ├── pages/
 │   └── geno-citizen/
-│       ├── ui/
-│       │   ├── GenoCitizenPage.tsx          # Mobile container with tabbed sub-views
-│       │   ├── SafeMatchSessionPage.tsx      # Peer pairing & ZKP execution view
-│       │   └── HalalNavigatorPage.tsx        # Fatwa & Thiqa referral guide
+│       └── ui/
+│           └── GenoCitizenPage.tsx          # Mobile container with tabbed sub-views & Hub navigation
 ├── widgets/
+│   ├── geno-citizen-start/                  # Premarital Wellness Hub & Onboarding Gateway
 │   ├── geno-mendelian-simulator/            # 4-Quadrant interactive Punnett simulator
 │   ├── geno-safematch-card/                 # ZKP session card with QR / peer code
 │   ├── geno-halal-roadmap/                  # Step-by-step PGT-M clinic roadmap
 │   └── geno-carrier-summary/                # Plain-language variant translation card
-├── features/
-│   ├── run-safematch/                       # Client-side Bloom filter hash & compare
-│   ├── simulate-pregnancy/                  # Monte Carlo pregnancy probability roll
-│   └── generate-cascade-token/              # Encrypted anonymous family alert link
-└── entities/
-    └── genomics/                            # Types, local store, and mock couples
+├── entities/
+│   └── genomics/                            # Types, local store, and synthetic cohort (CPL-01 to CPL-09)
 ```
 
 ---
